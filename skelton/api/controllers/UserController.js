@@ -1,8 +1,11 @@
 var express = require('express')
   , router = express.Router()
+  , User = require('../models/User');
 
 router.get('/:id', function(req, res) {
-  res.send('hi');
+	User.getName(function(name){
+		res.send(name);
+	});
 });
 
 module.exports = router;

@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-        "express": "~4.0.0"
+      "body-parser": "^1.12.3",
+      "express": "^4.12.3",
+      "jade": "^1.9.2"
   },
   "directories": {
     "test": "test"
