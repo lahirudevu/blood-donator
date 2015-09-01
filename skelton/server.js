@@ -1,12 +1,17 @@
-var express = require('express');
-var app     = express();
-var port    =   process.env.PORT || 8080;
-var router = require('./config/routes');
+var express = require('express')
+  , app = express()
+  , bodyParser = require('body-parser')
+  , port = process.env.PORT || 3001
 
-app.use('/', router);
-app.listen(port);
+app.set('views', __dirname + '/views')
+app.engine('jade', require('jade').__express)
+app.set('view engine', 'jade')
 
-app.locals.router = express.Router();
-app.locals.express = express;
+app.use(express.static(__dirname + '/public'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(require('./api/controllers'))
 
-console.log('Magic happens on port ' + port);
+app.listen(port, function() {
+  console.log('Listening on port ' + port)
+})
