@@ -1,4 +1,5 @@
-// Get all comments
-exports.getName = function(cb) {
-  cb('madhumal');
+module.exports = {
+	getName : function(cb) {
+  		return cb('madhumal');
+	}
 }
