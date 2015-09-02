@@ -1,5 +1,13 @@
-module.exports = {
-	getName : function(cb) {
-  		return cb('madhumal');
-	}
-}
+var Waterline = require('waterline');
+
+module.exports = Waterline.Collection.extend({
+
+    identity: 'user',
+    connection: 'default',
+
+    attributes: {
+        first_name: 'string',
+        last_name: 'string'
+    }
+
+});
