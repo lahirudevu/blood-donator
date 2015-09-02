@@ -1,18 +1,18 @@
-var express = require('express')
-  , router = express.Router()
-  , api = require('../Api');
+import express from 'express';
+import api  from '../Api';
 
-router.get('/name/:id', function(req, res) {
+var router = express.Router();
+
+router.get('/name/:id', (req, res) => {
 	api.models.user.sayhi(function(result){
 		res.send(result);
 	});
-	//res.send('hi');
 });
 
-router.get('/create', function(req, res) {
+router.get('/create', (req, res) => {
 
 	var user = {"first_name":"lahiru","last_name":"last_name"};
-	api.models.user.create(user).exec(function(error, model){
+	api.models.user.create(user).exec( (error, model) => {
 		res.send(model);
 	});
 });

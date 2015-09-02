@@ -1,9 +1,9 @@
-var express = require('express')
-  , app = express()
-  , bodyParser = require('body-parser')
-  , port = (process.env.PORT || 3001);
+import express from 'express';
+import bodyParser from 'body-parser';
+import path from 'path';
 
-var path = require('path');
+var app = express();
+var port = (process.env.PORT || 3001);
 global.appRoot = path.resolve(__dirname);
 
 //set view engine
@@ -20,6 +20,6 @@ var DB = require('./config/DBConfig');
 
 DB.setup();
 
-app.listen(port, function() {
+app.listen(port, () => {
   	console.log('Listening on port ' + port)
 });

@@ -5,7 +5,7 @@ var gls = require('gulp-live-server');
 
 gulp.task('server', function() {
   //1. run your script as a server
-  var server = gls.new('server.js');
+  var server = gls.new('index.js');
   server.start();
 
   //2. run script with cwd args, e.g. the harmony flag

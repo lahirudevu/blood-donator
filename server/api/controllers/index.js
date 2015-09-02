@@ -1,11 +1,12 @@
-var express = require('express')
-  , router = express.Router();
+import express from 'express';
 
-  console.log('loading routes');
+var router = express.Router();
+
+console.log('loading routes');
 
 router.use('/user', require('./UserController'));
 
-router.get('/', function(req, res) {
+router.get('/', (req, res) => {
   res.render('index')
 });
 

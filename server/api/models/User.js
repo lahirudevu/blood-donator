@@ -1,6 +1,6 @@
-var Waterline = require('waterline');
+import Waterline from 'waterline';
 
-module.exports = Waterline.Collection.extend({
+export default Waterline.Collection.extend({
 
     identity: 'user',
     connection: 'default',
