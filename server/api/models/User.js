@@ -8,6 +8,10 @@ module.exports = Waterline.Collection.extend({
     attributes: {
         first_name: 'string',
         last_name: 'string'
+    },
+
+    sayhi : function(cb){
+    	return cb('hi');
     }
 
 });
