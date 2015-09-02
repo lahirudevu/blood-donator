@@ -1,17 +1,16 @@
 var express = require('express')
   , router = express.Router()
-  , User = require('../models/User');
+  , DB = require('../../config/DB');
+
 
 router.get('/name/:id', function(req, res) {
-	User.getName(function(name){
-		res.send(name);
-	});
+	res.send('hi');
 });
 
 router.get('/create', function(req, res) {
 
 	var user = {"first_name":"lahiru","last_name":"last_name"};
-	models.user.create(user).exec(function(error, model){
+	DB.models.user.create(user).exec(function(error, model){
 		res.send(model);
 	});
 });
