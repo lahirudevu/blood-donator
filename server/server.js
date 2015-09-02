@@ -3,9 +3,6 @@ var express = require('express')
   , bodyParser = require('body-parser')
   , port = (process.env.PORT || 3001);
 
-var path = require('path');
-global.appRoot = path.resolve(__dirname);
-
 //set view engine
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
