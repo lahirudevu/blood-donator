@@ -2,9 +2,6 @@ var postgresAdapter = require('sails-mongo');
 var Waterline = require('waterline');
 var DB = require('./DB');
 
-var path = require('path');
-var appRoot = path.resolve(__dirname);
-
 module.exports={
 
 	setup : function(){
