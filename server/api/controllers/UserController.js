@@ -10,8 +10,8 @@ router.get('/name/:id', (req, res) => {
 });
 
 router.get('/create', (req, res) => {
+	let user = {"first_name":"lahiru","last_name":"last_name"};
 
-	var user = {"first_name":"lahiru","last_name":"last_name"};
 	api.models.user.create(user).exec( (error, model) => {
 		res.send(model);
 	});
