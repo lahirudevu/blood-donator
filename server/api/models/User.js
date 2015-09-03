@@ -11,6 +11,7 @@ export default Waterline.Collection.extend({
     },
 
     sayhi : function(cb){
+    	logger.debug('saying hello');
     	return cb('hi');
     }
 

@@ -17,8 +17,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(require('./api/controllers'));
 var DB = require('./config/DBConfig');
-
+var Log = require('./config/LogConfig');
 DB.setup();
+Log.setup();
 
 app.listen(port, () => {
   	console.log('Listening on port ' + port)
