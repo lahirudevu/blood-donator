@@ -31,7 +31,7 @@ module.exports={
 			  })
 			  .forEach(function(file) {
 			    var model = require(path.join(appRoot+"/api/models/", file));
-			    console.log('loading model')
+			    logger.info('loading model '+file)
 			    orm.loadCollection(model);
 			  });
 
