@@ -38,8 +38,8 @@ module.exports={
 			//initialize waterline models
 			orm.initialize(config, function(err, models) {
 			  if(err) throw err;
-			  api.models = models.collections;
-			  api.connections = models.connections;
+			  global.models = models.collections;
+			  global.connections = models.connections;
 			 
 			});
 	}
