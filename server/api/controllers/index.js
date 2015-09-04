@@ -2,7 +2,7 @@ import express from 'express';
 
 var router = express.Router();
 
-console.log('loading routes');
+logger.info('loading routes');
 
 router.use('/user', require('./UserController'));
 

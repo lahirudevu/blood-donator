@@ -9,7 +9,9 @@
     "ejs": "^2.3.3",
     "express": "^4.12.3",
     "sails-mongo": "~0.11.2",
-    "waterline": "~0.10.26"
+    "waterline": "~0.10.26",
+    "winston": "~1.0.1",
+    "gulp": "~3.9.0"
   },
   "directories": {
     "test": "test"

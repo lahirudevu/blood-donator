@@ -1,6 +1,5 @@
 var postgresAdapter = require('sails-mongo');
 var Waterline = require('waterline');
-var api = require('../api/Api');
 
 module.exports={
 
@@ -31,16 +30,16 @@ module.exports={
 			  })
 			  .forEach(function(file) {
 			    var model = require(path.join(appRoot+"/api/models/", file));
-			    console.log('loading model')
+			    logger.info('loading model '+file)
 			    orm.loadCollection(model);
 			  });
 
 			//initialize waterline models
 			orm.initialize(config, function(err, models) {
 			  if(err) throw err;
-			  api.models = models.collections;
-			  api.connections = models.connections;
-			 
+			  global.models = models.collections;
+			  global.connections = models.connections;
+
 			});
 	}
 };

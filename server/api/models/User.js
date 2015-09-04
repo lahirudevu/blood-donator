@@ -11,6 +11,7 @@ var User =  Waterline.Collection.extend({
     },
 
     sayhi : (cb) => {
+    	logger.debug('saying hello');
     	return cb('hi boys');
     }
 });
