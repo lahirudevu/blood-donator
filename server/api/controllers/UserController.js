@@ -1,10 +1,12 @@
 import express from 'express';
 import api  from '../Api';
+import User from '../models/User';
 
 var router = express.Router();
+// var user = new User._model();
 
 router.get('/name/:id', (req, res) => {
-	api.models.user.sayhi(function(result){
+	api.models.user.sayhi( (result) => {
 		res.send(result);
 	});
 });

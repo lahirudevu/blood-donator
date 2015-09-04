@@ -1,6 +1,6 @@
 import Waterline from 'waterline';
 
-export default Waterline.Collection.extend({
+var User =  Waterline.Collection.extend({
 
     identity: 'user',
     connection: 'default',
@@ -10,8 +10,14 @@ export default Waterline.Collection.extend({
         last_name: 'string'
     },
 
-    sayhi : function(cb){
-    	return cb('hi');
+    sayhi : (cb) => {
+    	return cb('hi boys');
     }
-
 });
+
+// Then on an instantiated user:
+// User.find({ "first_name":"lahiru" }).exec(function(err, model) {
+//   console.log(model.toJSON()); // Will return only the name
+// });
+
+export default User;

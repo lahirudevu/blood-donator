@@ -2,6 +2,9 @@
 var gulp = require('gulp');
 // var server = require('gulp-express');
 var gls = require('gulp-live-server');
+// var mocha = require('gulp-mocha');
+var mocha = require('gulp-mocha');
+var babel = require('babel/register');
 
 gulp.task('server', function() {
   //1. run your script as a server
@@ -24,5 +27,27 @@ gulp.task('server', function() {
     server.start.apply(server);
   });
 });
+
+gulp.task('test', function() {
+    // var server = gls.new('index.js');
+    // server.start();
+
+    return gulp.src(['tests/**/*.js'])
+        .pipe(mocha({
+            compilers: {
+                js: babel
+            }
+        }));
+});
+
+gulp.task('test-watch', function() {
+    gulp.watch(['tests/**/*.js'], ['test']);
+});
+
+// gulp.task('test', function () {
+//     return gulp.src('tests/**/*.js', {read: false})
+//         // gulp-mocha needs filepaths so you can't have any plugins before it
+//         .pipe(mocha({reporter: 'nyan'}));
+// });
 
 gulp.task('default',['server']);
