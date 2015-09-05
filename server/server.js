@@ -1,3 +1,5 @@
+"user strict";
+
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
@@ -24,5 +26,5 @@ DB.setup();
 
 
 app.listen(port, () => {
-  	logger.info('Listening on port ' + port)
+  	logger.info('Listening on port ' + port);
 });

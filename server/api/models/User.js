@@ -15,7 +15,9 @@ var User =  Waterline.Collection.extend({
     	return cb('hi boys');
     }
 });
-
+console.log('===========================================');
+console.log(User.first_name);
+console.log('===========================================');
 // Then on an instantiated user:
 // User.find({ "first_name":"lahiru" }).exec(function(err, model) {
 //   console.log(model.toJSON()); // Will return only the name

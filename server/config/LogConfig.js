@@ -1,7 +1,7 @@
-var winston = require('winston');
+import winston from 'winston';
 winston.emitErrs = true;
 
-module.exports = {
+export default {
 
     setup : function(){
 
@@ -14,7 +14,7 @@ module.exports = {
                     json: true,
                     maxsize: 5242880, //5MB
                     maxFiles: 5,
-                    colorize: false
+                    colorize: true
                 }),
                 new winston.transports.Console({
                     level: 'debug',

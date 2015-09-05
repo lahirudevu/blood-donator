@@ -1,3 +1,5 @@
+"user strict";
+
 import express from 'express';
 import User from '../models/User';
 
@@ -5,7 +7,7 @@ var router = express.Router();
 // var user = new User._model();
 
 router.get('/name/:id', (req, res) => {
-	models.user.sayhi(function(result){
+	models.user.sayhi( (result) => {
 		res.send(result);
 	});
 });

@@ -5,6 +5,7 @@ var gls = require('gulp-live-server');
 // var mocha = require('gulp-mocha');
 var mocha = require('gulp-mocha');
 var babel = require('babel/register');
+var jshint = require('gulp-jshint');
 
 gulp.task('server', function() {
   //1. run your script as a server
@@ -23,7 +24,7 @@ gulp.task('server', function() {
   // });
   // gulp.watch('server.js', server.start.bind(server)); //restart my server
 
-  gulp.watch(['server.js', 'api/**/*.js'], function() {
+  gulp.watch(['server.js', 'api/**/*.js', 'config/*.js'], function() {
     server.start.apply(server);
   });
 });
@@ -50,4 +51,12 @@ gulp.task('test-watch', function() {
 //         .pipe(mocha({reporter: 'nyan'}));
 // });
 
+// JS hint task
+gulp.task('jshint', function() {
+  gulp.src(['server.js', 'api/**/*.js', 'test/**/*.js'])
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
+
 gulp.task('default',['server']);
+gulp.task('test-server', ['server', 'test-watch'])
