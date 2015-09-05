@@ -6,11 +6,11 @@ describe('User Model', () => {
         console.log(User.sayhi);
         // var User = new User();
         // console.log(User);
-        // expect('hi').toEqual('hi');
-        // done();
-        User.sayhi( (result) => {
-            expect(result).toEqual('hi');
-            done();
-    	});
+        expect('hi').toEqual('hi');
+        done();
+        // User.sayhi( (result) => {
+        //     expect(result).toEqual('hi');
+        //     done();
+    	// });
     });
 });
