@@ -7,6 +7,13 @@ var mocha = require('gulp-mocha');
 var babel = require('babel/register');
 var jshint = require('gulp-jshint');
 
+var paths = {
+  scripts: ['server.js', 'api/**/*.js', 'config/*.js'],
+  hints: ['server.js', 'api/**/*.js', 'test/**/*.js', 'config/*.js'],
+  images: 'client/img/**/*'
+};
+
+
 gulp.task('server', function() {
   //1. run your script as a server
   var server = gls.new('index.js');
@@ -24,7 +31,7 @@ gulp.task('server', function() {
   // });
   // gulp.watch('server.js', server.start.bind(server)); //restart my server
 
-  gulp.watch(['server.js', 'api/**/*.js', 'config/*.js'], function() {
+  gulp.watch(paths.scripts, function() {
     server.start.apply(server);
   });
 });
@@ -45,17 +52,23 @@ gulp.task('test-watch', function() {
     gulp.watch(['tests/**/*.js'], ['test']);
 });
 
-// gulp.task('test', function () {
-//     return gulp.src('tests/**/*.js', {read: false})
-//         // gulp-mocha needs filepaths so you can't have any plugins before it
-//         .pipe(mocha({reporter: 'nyan'}));
-// });
-
 // JS hint task
 gulp.task('jshint', function() {
-  gulp.src(['server.js', 'api/**/*.js', 'test/**/*.js'])
-    .pipe(jshint())
+  gulp.src(paths.hints)
+    .pipe(jshint({
+        "strict": false,
+        "globals": {
+            "logger": false,
+            "models": false,
+            "appRoot": false
+        }
+    }))
     .pipe(jshint.reporter('default'));
+});
+
+gulp.task('watch', function() {
+    // gulp.watch(paths.scripts, ['server']);
+    gulp.watch(paths.hints, ['jshint']);
 });
 
 gulp.task('default',['server']);

@@ -1,4 +1,4 @@
-"user strict";
+'user strict';
 
 import express from 'express';
 import bodyParser from 'body-parser';

@@ -28,9 +28,9 @@ export default {
 
         global.logger.stream = {
             write: function(message, encoding){
-                logger.info(message);
+                logger.info(message + ' - ' + encoding);
             }
         };
 
     }
-}
+};

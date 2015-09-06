@@ -7,7 +7,7 @@ logger.info('loading routes');
 router.use('/user', require('./UserController'));
 
 router.get('/', (req, res) => {
-  res.render('index')
+  res.render('index');
 });
 
 export default router;

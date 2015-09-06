@@ -1,7 +1,7 @@
-"user strict";
+'user strict';
 
 import express from 'express';
-import User from '../models/User';
+// import User from '../models/User';
 
 var router = express.Router();
 // var user = new User._model();
@@ -13,7 +13,7 @@ router.get('/name/:id', (req, res) => {
 });
 
 router.get('/create', (req, res) => {
-	let user = {"first_name":"lahiru","last_name":"last_name"};
+	let user = {'firstName': 'lahiru', 'lastName': 'madhumal'};
 
 	models.user.create(user).exec( (error, model) => {
 		res.send(model);

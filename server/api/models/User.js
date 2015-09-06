@@ -6,8 +6,8 @@ var User =  Waterline.Collection.extend({
     connection: 'default',
 
     attributes: {
-        first_name: 'string',
-        last_name: 'string'
+        firstName: 'string',
+        lastName: 'string'
     },
 
     sayhi : (cb) => {
@@ -16,7 +16,7 @@ var User =  Waterline.Collection.extend({
     }
 });
 console.log('===========================================');
-console.log(User.first_name);
+console.log(User.firstName);
 console.log('===========================================');
 // Then on an instantiated user:
 // User.find({ "first_name":"lahiru" }).exec(function(err, model) {

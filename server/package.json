@@ -18,9 +18,10 @@
   },
   "scripts": {
     "test": "gulp test-server",
-    "start": "gulp server",
+    "start": "gulp",
     "test_server": "gulp test-server",
-    "jshint": "gulp jshint"
+    "jshint": "gulp jshint",
+    "jshint-watch": "gulp jshint-watch"
   },
   "author": "",
   "license": "BSD-2-Clause",
