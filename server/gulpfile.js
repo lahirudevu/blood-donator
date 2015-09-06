@@ -6,13 +6,24 @@ var gls = require('gulp-live-server');
 var mocha = require('gulp-mocha');
 var babel = require('babel/register');
 var jshint = require('gulp-jshint');
+var map = require('map-stream');
+var symlink = require('gulp-symlink'); //Again don't forget to install it
 
 var paths = {
   scripts: ['server.js', 'api/**/*.js', 'config/*.js'],
   hints: ['server.js', 'api/**/*.js', 'test/**/*.js', 'config/*.js'],
+  hooks: 'hooks/.pre-commit',
   images: 'client/img/**/*'
 };
 
+var errorReporter = function () {
+  return map(function (file, cb) {
+    if (!file.jshint.success) {
+      process.exit(1);
+    }
+    cb(null, file);
+  });
+};
 
 gulp.task('server', function() {
   //1. run your script as a server
@@ -63,12 +74,18 @@ gulp.task('jshint', function() {
             "appRoot": false
         }
     }))
-    .pipe(jshint.reporter('default'));
+    .pipe(jshint.reporter('default'))
+    .pipe(errorReporter());
 });
 
 gulp.task('watch', function() {
     // gulp.watch(paths.scripts, ['server']);
     gulp.watch(paths.hints, ['jshint']);
+});
+
+gulp.task('hook', function () {
+  return gulp.src(paths.hooks)
+    .pipe(symlink('.git/hooks/pre-commit'));
 });
 
 gulp.task('default',['server']);
