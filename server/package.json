@@ -19,7 +19,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "gulp test-server",
+    "test": "gulp test",
+    "test_watch" : "gulp test-server",
     "start": "gulp",
     "test_server": "gulp test-server",
     "jshint": "gulp jshint",
