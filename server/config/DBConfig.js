@@ -1,6 +1,7 @@
 // var postgresAdapter = require('sails-mongo');
 var Waterline = require('waterline');
 var mysqlAdapter = require('sails-mysql');
+var serverConfigs = require('../config');
 
 export default {
 
@@ -19,8 +20,8 @@ export default {
 				        host: 'localhost',
 				        database: 'bloodDonatorDB',
 				        port      : 3306,
-					    user      : 'root',
-					    password  : 'pass'
+					    user      : serverConfigs.DBUser,
+					    password  : serverConfigs.DBPassword
 			        }
 			    },
 
