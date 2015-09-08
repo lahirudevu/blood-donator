@@ -5,15 +5,23 @@ var serverConfigs = require('../config');
 
 export default {
 
+	/**
+	**This method initializes the database and loades water line models
+	**
+	**/
 	setup : function() {
 			var orm = new Waterline();
 
 			var config = {
+
+				//available adapters
 			    adapters: {
 			        'default': mysqlAdapter,
 			        mongo: require('sails-mongo'),
 			        mysql: mysqlAdapter
 			    },
+
+			    //usable connections
 			    connections: {
 			        'default': {
 			            adapter: 'mysql',
@@ -25,6 +33,7 @@ export default {
 			        }
 			    },
 
+			    //create or update table structure
 			    defaults: {
 			    	migrate: 'alter'
 			    }

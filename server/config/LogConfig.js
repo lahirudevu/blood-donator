@@ -5,6 +5,7 @@ export default {
 
     setup : function(){
 
+        //exposed as global to use everywhere
         global.logger = new winston.Logger({
             transports: [
                 new winston.transports.File({

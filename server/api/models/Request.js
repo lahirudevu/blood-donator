@@ -2,12 +2,12 @@ import Waterline from 'waterline';
 
 module.exports = Waterline.Collection.extend({
 
-    identity: 'user',
+    identity: 'request',
     connection: 'default',
 
     attributes: {
-        firstName: 'string',
-        lastName: 'string'
+        title: 'string',
+        description: 'string'
     },
 
     sayhi : (cb) => {
