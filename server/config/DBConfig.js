@@ -1,5 +1,6 @@
 // var postgresAdapter = require('sails-mongo');
 var Waterline = require('waterline');
+var mysqlAdapter = require('sails-mysql');
 
 export default {
 
@@ -8,14 +9,23 @@ export default {
 
 			var config = {
 			    adapters: {
-			        'default': 'mongo',
-			        mongo: require('sails-mongo')
+			        'default': mysqlAdapter,
+			        mongo: require('sails-mongo'),
+			        mysql: mysqlAdapter
 			    },
 			    connections: {
 			        'default': {
-			            adapter: 'mongo',
-			            url: 'mongodb://localhost:27017/testone'
+			            adapter: 'mysql',
+				        host: 'localhost',
+				        database: 'bloodDonatorDB',
+				        port      : 3306,
+					    user      : 'root',
+					    password  : 'pass'
 			        }
+			    },
+
+			    defaults: {
+			    	migrate: 'alter'
 			    }
 			};
 

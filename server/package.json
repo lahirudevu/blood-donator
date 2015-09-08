@@ -13,14 +13,15 @@
     "winston": "~1.0.1",
     "gulp": "~3.9.0",
     "gulp-live-server": "0.0.25",
-    "map-stream": "0.0.6"
+    "map-stream": "0.0.6",
+    "sails-mysql": "~0.11.0"
   },
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "gulp test",
-    "test_watch" : "gulp test-server",
+    "test_watch": "gulp test-server",
     "start": "gulp",
     "test_server": "gulp test-server",
     "jshint": "gulp jshint",
