@@ -4,7 +4,10 @@ var router = express.Router();
 
 //create a new request object
 router.post('/', (req, res) => {
-	res.send('create a new request object');
+	let requestObj = req.request;
+	models.request.create(requestObj).exec( (error, model) => {
+		res.send(model);
+	});
 });
 
 //update an existing model or create new instance if not
@@ -35,6 +38,11 @@ router.get('/findOne', (req, res) => {
 //get an instance by id
 router.get('/:id', (req, res) => {
 	res.send('get an instance by id');
+});
+
+//check weather an instance exists
+router.get('/:id/exists', (req, res) => {
+	res.send('check weather an instance exists');
 });
 
 //delete an instance by id
