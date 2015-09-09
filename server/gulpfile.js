@@ -25,6 +25,7 @@ var errorReporter = function () {
   });
 };
 
+//start server and watch for changes
 gulp.task('server', function() {
   //1. run your script as a server
   var server = gls.new('index.js');
@@ -45,18 +46,6 @@ gulp.task('server', function() {
   gulp.watch(paths.scripts, function() {
     server.start.apply(server);
   });
-});
-
-gulp.task('test', function() {
-    // var server = gls.new('index.js');
-    // server.start();
-
-    return gulp.src(['tests/**/*.js'])
-        .pipe(mocha({
-            compilers: {
-                js: babel
-            }
-        }));
 });
 
 gulp.task('test-watch', function() {
@@ -83,10 +72,32 @@ gulp.task('watch', function() {
     gulp.watch(paths.hints, ['jshint']);
 });
 
+//pre commit git hook
 gulp.task('hook', function () {
   return gulp.src(paths.hooks)
     .pipe(symlink('../.git/hooks/pre-commit'));
 });
 
+//run tests
+gulp.task('test', function() {
+    return gulp.src(['tests/bootstrap.js'])
+        .pipe(mocha({
+            compilers: {
+                js: babel
+            }
+        }));
+});
+
+var testServer;
+gulp.task('testServer', function() {
+    testServer = gls.new('index.js');
+    testServer.start();
+});
+
+gulp.task('stopServer', function() {
+    testServer.stop();
+});
+
+gulp.task('integrate-test', ['testServer', 'test', 'stopServer']); //integrate testing
 gulp.task('default',['server']);
-gulp.task('test-server', ['server', 'test-watch'])
+gulp.task('test-server', ['server', 'test-watch']);
