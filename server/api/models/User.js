@@ -11,7 +11,7 @@ module.exports = Waterline.Collection.extend({
     },
 
     sayhi : () => {
-    	return Promise.resolve('hi');
+    	return Promise.resolve('hi guys');
     },
 
     sayhello : (hiIp, helloIP) => {
