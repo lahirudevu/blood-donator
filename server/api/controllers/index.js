@@ -1,13 +1,13 @@
 import express from 'express';
+import policies from '../policies/';
 
 var router = express.Router();
-var sessionAuth = require('../policies/sessionAuth');
 
 /**
 **This section binds the policies to relevant routes
 **/
 logger.info('loading the system policies');
-router.all("/user/*", sessionAuth, function(req, res, next) {
+router.all("/user/*", policies.sessionAuth, policies.isCreator, function(req, res, next) {
   next();
 });
 
