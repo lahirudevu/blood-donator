@@ -21,6 +21,8 @@ router.all("/user/*", policies.sessionAuth, policies.isCreator, function(req, re
 logger.info('loading routes');
 router.use('/user', require('./UserController'));
 router.use('/request', require('./RequestController'));
+router.use('/event', require('./EventController'));
+router.use('/comment', require('./CommentController'));
 
 router.get('/', (req, res) => {
   res.render('index');
