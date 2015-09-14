@@ -1,4 +1,7 @@
 {
-	"DBUser" : "root",
-	"DBPassword" : "pass"
+	"DBUser": "root",
+	"DBPassword": "pass",
+	"EmailService": "Gmail",
+	"Email": "blooddonator123",
+	"EmailPassword": "blood @123"
 }

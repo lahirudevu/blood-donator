@@ -1,6 +1,7 @@
 'use strict';
 
 import express from 'express';
+import Email from '../services/Email';
 
 var router = express.Router();
 
@@ -31,6 +32,18 @@ router.get('/create', (req, res) => {
 	})
 	.catch((error)=>{
 		logger.error(error);
+		res.send(error);
+	});
+});
+
+router.get('/send-email', (req, res) => {
+	Email.send('vgayancharith@gmail.com', 'subject', 'this is text')
+	.then((result) => {
+		logger.debug('Email send successfully');
+		res.send(result);
+	})
+	.catch((error) => {
+		logger.error('error occured when sending the email ' + error);
 		res.send(error);
 	});
 });

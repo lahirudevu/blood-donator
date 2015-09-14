@@ -8,13 +8,14 @@
     "body-parser": "^1.12.3",
     "ejs": "^2.3.3",
     "express": "^4.12.3",
-    "sails-mongo": "~0.11.2",
-    "waterline": "~0.10.26",
-    "winston": "~1.0.1",
     "gulp": "~3.9.0",
     "gulp-live-server": "0.0.25",
     "map-stream": "0.0.6",
-    "sails-mysql": "~0.11.0"
+    "nodemailer": "0.7.0",
+    "sails-mongo": "~0.11.2",
+    "sails-mysql": "~0.11.0",
+    "waterline": "~0.10.26",
+    "winston": "~1.0.1"
   },
   "directories": {
     "test": "test"
