@@ -48,14 +48,12 @@ gulp.task('server', function() {
 });
 
 gulp.task('test', function() {
-    // var server = gls.new('index.js');
-    // server.start();
-
-    return gulp.src(['tests/**/*.js'])
+    return gulp.src(['tests/bootstrap.js', 'tests/**/*.js'])
         .pipe(mocha({
             compilers: {
                 js: babel
-            }
+            },
+            ui: 'tdd'
         }));
 });
 
@@ -85,7 +83,7 @@ gulp.task('watch', function() {
 
 gulp.task('hook', function () {
   return gulp.src(paths.hooks)
-    .pipe(symlink('../.git/hooks/pre-commit'));
+    .pipe(symlink('../.git/hooks/pre-commit', {force: true}));
 });
 
 gulp.task('default',['server']);
