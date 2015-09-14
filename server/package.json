@@ -27,7 +27,8 @@
     "test_server": "gulp test-server",
     "jshint": "gulp jshint",
     "jshint-watch": "gulp jshint-watch",
-    "postinstall": "gulp hook"
+    "postinstall": "gulp hook",
+    "hook": "gulp hook"
   },
   "author": "",
   "license": "BSD-2-Clause",
