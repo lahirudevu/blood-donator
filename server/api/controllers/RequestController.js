@@ -4,10 +4,22 @@ var router = express.Router();
 
 //create a new request object
 router.post('/', (req, res) => {
-	var user_id = req.body.id;
-    var token = req.body.token;
-    var geo = req.body.geo;
-    res.send(user_id + ' ' + token + ' ' + geo);
+
+	let request = req.body;
+
+	models.request.create(request)
+	.then((result)=>{
+
+		logger.info('created a new request ');
+		logger.debug(request);
+
+		res.status(201).send(result);
+	})
+	.catch((error)=>{
+		logger.error(error);
+		res.status(400).send(error);
+	});
+	
 });
 
 //update an existing model or create new instance if not
