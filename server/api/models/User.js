@@ -10,8 +10,12 @@ module.exports = Waterline.Collection.extend({
         lastName: 'string'
     },
 
-    sayhi : (cb) => {
-    	logger.debug('saying hello');
-    	return cb('hi boys');
+    sayhi : () => {
+    	return Promise.resolve('hi');
+    },
+
+    sayhello : (hiIp, helloIP) => {
+        let result = hiIp +" "+helloIP;
+        return Promise.resolve(result);
     }
 });
