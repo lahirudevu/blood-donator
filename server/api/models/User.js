@@ -6,8 +6,17 @@ module.exports = Waterline.Collection.extend({
     connection: 'default',
 
     attributes: {
+
         firstName: 'string',
-        lastName: 'string'
+
+        lastName: 'string',
+
+        requests: {
+
+                   collection: 'request',
+                   via: 'user'
+                },
+
     },
 
     sayhi : () => {
