@@ -18,6 +18,7 @@ Log.setup();
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
+app.use(bodyParser.text());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(require('./api/controllers'));
 
