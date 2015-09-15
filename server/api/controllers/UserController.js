@@ -5,15 +5,15 @@ import Email from '../services/Email';
 
 var router = express.Router();
 
-//create a new request object
+//create a new user object
 router.post('/', (req, res) => {
 
-	let request = req.body;
+	let user = req.body;
 
-	models.request.create(request)
+	models.user.create(user)
 	.then((result)=>{
 
-		logger.info('created a new request ');
+		logger.info('created a new user ');
 		logger.debug(result);
 
 		res.status(201).send(result);
@@ -33,10 +33,10 @@ router.put('/:id', (req, res) => {
 	logger.info('updating model ' + id);
 
 	//update the object
-	models.request.update({"id":id}, updateObj)
+	models.user.update({"id":id}, updateObj)
 	.then((result)=>{
 
-		logger.info('updated the request ');
+		logger.info('updated the user ');
 		logger.debug(result);
 
 		res.status(200).send(result);
@@ -56,10 +56,10 @@ router.post('/update', (req, res) => {
 	logger.info('updating matcing models ');
 
 	//update the matching objects
-	models.request.update(filter, updateObj)
+	models.user.update(filter, updateObj)
 	.then((result)=>{
 
-		logger.info('updated request objs ');
+		logger.info('updated user objs ');
 		logger.debug(result);
 
 		res.status(200).send(result);
@@ -75,10 +75,10 @@ router.delete('/:id', (req, res) => {
 
 	let id = req.params.id;
 
-	models.request.destroy({"id":id})
+	models.user.destroy({"id":id})
 	.then((result)=>{
 
-		logger.info('deleted the request ');
+		logger.info('deleted the user ');
 		logger.debug(result);
 
 		res.status(200).send(result);
@@ -94,10 +94,10 @@ router.get('/:id', (req, res) => {
 
 	let id = req.params.id;
 
-	models.request.findOne({"id":id})
+	models.user.findOne({"id":id})
 	.then((result)=>{
 
-		logger.info('finding a request ');
+		logger.info('finding a user ');
 		logger.debug(result);
 
 		res.status(201).send(result);
@@ -113,14 +113,14 @@ router.get('/:id/exists', (req, res) => {
 
 	let id = req.params.id;
 
-	models.request.findOne({"id":id})
+	models.user.findOne({"id":id})
 	.then((result)=>{
 
 		if(result && result.id){
-			logger.info('request obj exists');
+			logger.info('user obj exists');
 			res.status(200).send(true);
 		}else{
-			logger.info('request obj doesnt exist');
+			logger.info('user obj doesnt exist');
 			res.status(200).send(false);
 		}
 
@@ -136,13 +136,13 @@ router.get('/', (req, res) => {
 
 	let filter = req.query;
 
-	logger.debug('finding all requests filter : ');
+	logger.debug('finding all users filter : ');
 	logger.debug(filter);
 
-	models.request.find(filter)
+	models.user.find(filter)
 	.then((result)=>{
 
-		logger.info('finding all the request objs matching criteria');
+		logger.info('finding all the user objs matching criteria');
 		res.status(200).send(result);
 
 	})
@@ -159,17 +159,17 @@ router.put('/', (req, res) => {
 	let updateObj = req.body.update;
 
 	//update the matching objects
-	models.request.find(filter)
+	models.user.find(filter)
 	.then((result)=>{
 
 		if(result.length>0){
 			logger.info('updating obj in update or create');
 			res.status(200);
-			return models.request.update(filter, updateObj);
+			return models.user.update(filter, updateObj);
 		}else{
 			logger.info('create obj in update or create');
 			res.status(201);
-			return models.request.create(updateObj);
+			return models.user.create(updateObj);
 		}
 		
 	}).then((result)=>{
