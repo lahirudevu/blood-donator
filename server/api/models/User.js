@@ -7,9 +7,17 @@ module.exports = Waterline.Collection.extend({
 
     attributes: {
 
-        firstName: 'string',
+        firstName: {
+                  type: 'string'
+                },
 
-        lastName: 'string',
+        lastName: {
+                  type: 'string'
+                },
+
+        email: {
+                  type: 'email'
+                },
 
         requests: {
 
