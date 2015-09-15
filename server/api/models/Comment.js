@@ -12,12 +12,17 @@ module.exports = Waterline.Collection.extend({
 			      required: true
 			    },
 
+		commentorDispName : {
+				  type: 'string',
+			      required: true
+				},
+
 		user : 	{	
 					model : 'user'
 				},
 
 		commentType : {
-			
+
 					type: 'string',
 			      	enum: ['event', 'request','donation'],
 			      	required: true
