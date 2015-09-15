@@ -36,8 +36,7 @@ gulp.task('server', function() {
 });
 
 gulp.task('test', function() {
-    // return gulp.src(['tests/bootstrap.js', 'tests/**/*.js'])
-    return gulp.src('tests/bootstrap.js')
+    return gulp.src(['tests/bootstrap.js', 'tests/**/*.js'])
         .pipe(mocha({
             compilers: {
                 js: babel

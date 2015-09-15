@@ -27,7 +27,7 @@ module.exports = Waterline.Collection.extend({
         events: {
             collection: 'event',
             via: 'creator'
-        }
+        },
 
         comments: {
 
