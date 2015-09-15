@@ -31,6 +31,10 @@ module.exports = Waterline.Collection.extend({
                    via: 'user'
                 },
 
+        profileImageUrl: {
+                  type: 'string'
+                }
+
     },
 
     sayhi : () => {
