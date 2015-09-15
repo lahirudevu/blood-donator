@@ -17,6 +17,12 @@ module.exports = Waterline.Collection.extend({
                    via: 'user'
                 },
 
+        comments: {
+
+                   collection: 'comment',
+                   via: 'user'
+                },
+
     },
 
     sayhi : () => {
