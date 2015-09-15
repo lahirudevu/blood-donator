@@ -7,48 +7,47 @@ module.exports = Waterline.Collection.extend({
 
     attributes: {
 
-        title:  {
-			      type: 'string',
-			      required: true
-			    },
+        title: {
+            type: 'string',
+            required: true
+        },
 
-		patientName:  {
-			      type: 'string'
-			    },
+        patientName: {
+            type: 'string'
+        },
 
         description: {
-			      type: 'string',
-			      required: true
-			    },
+            type: 'string',
+            required: true
+        },
 
         requestType: {
-			      type: 'string',
-			      enum: ['blood', 'organ'],
-			      required: true
-			    },
+            type: 'string',
+            enum: ['blood', 'organ'],
+            required: true
+        },
 
-		bloodGroup: {
-			      type: 'string',
-			      enum: ['O+', 'O-','A+','A-','B+','B-','AB+','AB-'],
-			      required: true
-			    },
+        bloodGroup: {
+            type: 'string',
+            enum: ['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'],
+            required: true
+        },
 
-		contactEmail: {
-				  type: 'email'
-				},
+        contactEmail: {
+            type: 'email'
+        },
 
-		contactNums: {
-				  type: 'array'
-				},
+        contactNums: {
+            type: 'array'
+        },
 
-		comments: {
+        comments: {
+            collection: 'comment',
+            via: 'request'
+        },
 
-		           collection: 'comment',
-		           via: 'request'
-		        },
-
-		user : 	{	
-					model : 'user'
-				}
+        user: {
+            model: 'user'
+        }
     }
 });

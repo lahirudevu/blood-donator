@@ -12,10 +12,14 @@ module.exports = Waterline.Collection.extend({
         lastName: 'string',
 
         requests: {
+           collection: 'request',
+           via: 'user'
+        },
 
-                   collection: 'request',
-                   via: 'user'
-                },
+        events: {
+            collection: 'event',
+            via: 'creator'
+        }
 
     },
 
