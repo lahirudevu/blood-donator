@@ -67,7 +67,7 @@ module.exports = Waterline.Collection.extend({
         }
 
         Alias.find(aliasFilter)
-        .then((errFindAlias, matchAliases) => {
+        .then((matchAliases) => {
             if (matchAliases.constructor === Array && matchAliases.length === 0) {
                 logger.info(alias + ' alias created for ' + itemId);
                 return Promise.resolve(alias);

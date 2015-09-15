@@ -1,4 +1,5 @@
 import Waterline from 'waterline';
+import Alias from '../helpers/Alias';
 
 module.exports = Waterline.Collection.extend({
 
@@ -8,8 +9,7 @@ module.exports = Waterline.Collection.extend({
 	attributes: {
 
 		alias: {
-			type: 'string',
-			required: true
+			type: 'string'
 		},
 
 		title: {
@@ -32,10 +32,32 @@ module.exports = Waterline.Collection.extend({
 		}
 	},
 
-	beforeCreate: function(values, cb) {
+	beforeCreate: (values, cb) => {
 		logger.debug('inside Event: before create');
-		logger.debug(values);		
-		values.alias = 'new-event';
-		cb();
-	},
+		logger.debug(values);
+
+		let getSlug = require('speakingurl');
+		let alias = getSlug(values.title);
+		let aliasFilter = {or: [{alias: alias}, { alias: {'startsWith': alias + '-'}}]};
+
+		models.event.find(aliasFilter)
+		.then((matchAliases) => {
+			if (matchAliases.constructor === Array && matchAliases.length === 0) {
+                logger.info(alias + ' alias created for ' + values.title);
+                values.alias = alias;
+				cb();
+            } else {
+				// let Alias = new Alias();
+				Alias.calculateAlias(alias, matchAliases)
+				.then((alias) => {
+					values.alias = alias;
+					cb();
+				});
+			}
+		})
+		.catch((error) => {
+			logger.error('error occured in creating alias for event ' + values.title);
+			logger.error(error);
+		});
+	}
 });
