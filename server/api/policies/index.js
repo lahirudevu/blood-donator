@@ -1,6 +1,7 @@
 
 var sessionAuth = require('../policies/sessionAuth');
 var isCreator = require('../policies/isCreator');
+var hasEmail = require('../policies/hasEmail');
 
 /**
 **
@@ -9,5 +10,6 @@ var isCreator = require('../policies/isCreator');
 module.exports = {
 
 	sessionAuth : sessionAuth,
-	isCreator : isCreator
+	isCreator : isCreator,
+	hasEmail : hasEmail
 }

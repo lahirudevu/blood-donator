@@ -6,6 +6,28 @@ module.exports = Waterline.Collection.extend({
     connection: 'default',
 
     attributes: {
+
+    	content:  {
+			      type: 'string',
+			      required: true
+			    },
+
+		commentorDispName : {
+				  type: 'string',
+			      required: true
+				},
+
+		user : 	{	
+					model : 'user'
+				},
+
+		commentType : {
+
+					type: 'string',
+			      	enum: ['event', 'request','donation'],
+			      	required: true
+				},
+
         request: {
         	model:'request'
         }

@@ -7,9 +7,17 @@ module.exports = Waterline.Collection.extend({
 
     attributes: {
 
-        firstName: 'string',
+        firstName: {
+                  type: 'string'
+                },
 
-        lastName: 'string',
+        lastName: {
+                  type: 'string'
+                },
+
+        email: {
+                  type: 'email'
+                },
 
         requests: {
            collection: 'request',
@@ -20,6 +28,16 @@ module.exports = Waterline.Collection.extend({
             collection: 'event',
             via: 'creator'
         }
+
+        comments: {
+
+                   collection: 'comment',
+                   via: 'user'
+                },
+
+        profileImageUrl: {
+                  type: 'string'
+                }
 
     },
 
