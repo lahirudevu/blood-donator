@@ -1,4 +1,5 @@
-var passport = require('passport');
+import passport from 'passport';
+var serverConfigs = require('../../config');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 passport.serializeUser(function(user, done) {
@@ -11,12 +12,8 @@ passport.deserializeUser(function(obj, done) {
   	done(null, obj);
 });
 
-passport.use(new GoogleStrategy({
-        "clientID": "383932440440-7nqrv64ub3fp4ghcigj9bjj21lqu1krk.apps.googleusercontent.com",
-        "clientSecret": "_IpwR2UsdIr_T6W3RDvyBzY9",
-        "callbackURL": "http://localhost:3001/auth/google/callback"
-    },
-
+passport.use(new GoogleStrategy(
+  serverConfigs.google,
   function(accessToken, refreshToken, profile, done) {
 
     // Typically you would query the database to find the user record
@@ -27,6 +24,5 @@ passport.use(new GoogleStrategy({
 ));
 
 export default {
-
     passport : passport
 };

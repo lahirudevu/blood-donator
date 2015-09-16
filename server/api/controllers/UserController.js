@@ -4,6 +4,8 @@ import express from 'express';
 import Email from '../services/Email';
 
 var router = express.Router();
+router.use(passport.initialize());
+router.use(passport.session());
 
 //create a new user object
 router.post('/', (req, res) => {

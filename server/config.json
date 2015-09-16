@@ -8,6 +8,6 @@
 	"google": {
         "clientID": "383932440440-7nqrv64ub3fp4ghcigj9bjj21lqu1krk.apps.googleusercontent.com",
         "clientSecret": "_IpwR2UsdIr_T6W3RDvyBzY9",
-        "callbackURL": "http://localhost:3001/user/googlecallback"
+        "callbackURL": "http://localhost:3001/auth/google/callback"
     }
 }
