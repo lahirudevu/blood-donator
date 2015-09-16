@@ -19,6 +19,10 @@ module.exports = Waterline.Collection.extend({
                   type: 'email'
                 },
 
+        password: {
+                  type: 'string'
+                },
+
         requests: {
 
                    collection: 'request',

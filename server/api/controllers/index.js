@@ -20,6 +20,7 @@ router.all("/user/*", policies.sessionAuth, policies.isCreator, function(req, re
 **/
 logger.info('loading routes');
 router.use('/user', require('./UserController'));
+router.use('/auth', require('./AuthController'));
 router.use('/request', require('./RequestController'));
 router.use('/event', require('./EventController'));
 router.use('/comment', require('./CommentController'));
