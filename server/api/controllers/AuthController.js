@@ -11,7 +11,7 @@ router.get('/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/'
   }),
-  function(req, res) {
+  (req, res) => {
   	req.session.authenticated = true;
     res.send('authenticated');
   });
@@ -26,6 +26,16 @@ router.get('/authenticated', function(req, res) {
     res.send('not authenticated');
   }
 });
+
+router.get('/twitter',
+  passport.authenticate('twitter'));
+
+router.get('/twitter/callback', 
+  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  (req, res) => {
+    req.session.authenticated = true;
+    res.redirect('/');
+  });
 
 //destroy the session
 router.get('/logout', (req, res) => {

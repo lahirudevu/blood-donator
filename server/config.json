@@ -9,5 +9,10 @@
         "clientID": "383932440440-7nqrv64ub3fp4ghcigj9bjj21lqu1krk.apps.googleusercontent.com",
         "clientSecret": "_IpwR2UsdIr_T6W3RDvyBzY9",
         "callbackURL": "http://localhost:3001/auth/google/callback"
-    }
+    },
+    "twitter": {
+    "consumerKey": "t47hvz2scCDPVrh2SIBNLg6uQ",
+    "consumerSecret": "YamoPOrXYjHmF3eZiD9j1jpxHL0MXnnw95VJAKh4mIaXrFnVbD",
+    "callbackURL": "http://127.0.0.1:3001/auth/twitter/callback"
+  }
 }
