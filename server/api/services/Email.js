@@ -16,7 +16,7 @@ var smtpTransport = nodemailer.createTransport("SMTP",{
 
 export default {
     /**
-     * @desc send email to the receiver (`to`)
+     * @description send email to the receiver (`to`)
      * @param string to - receiver of the email
      * @param string subject - subject of the email
      * @param string text - body of the email
