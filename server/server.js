@@ -41,5 +41,5 @@ app.use(passport.session());
 app.use(require('./api/controllers'));
 
 app.listen(port, () => {
-  	logger.info('Listening on port ' + port);
+  	logger.info('Listening on the port ' + port);
 });
