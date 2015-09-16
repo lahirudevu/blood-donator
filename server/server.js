@@ -16,6 +16,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 
+
 var Log = require('./config/LogConfig');
 Log.setup();
 
