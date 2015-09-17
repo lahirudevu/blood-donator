@@ -1,8 +1,7 @@
 import React, { Component, PropTypes, findDOMNode } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 
-const DEFAULT_LOGIN = 'gaearon';
-const GITHUB_REPO = 'https://github.com/gaearon/flux-react-router-example';
+const DEFAULT_LOGIN = 'gayancharith';
 
 function parseFullName(params) {
   if (!params.login) {
@@ -58,7 +57,6 @@ export default class Explore extends Component {
                onChange={this.handleOnChange}
                value={this.state.loginOrRepo} />
         <button onClick={this.handleGoClick}>Go!</button>
-        <p>Code on <a href={GITHUB_REPO} target='_blank'>Github</a>.</p>
       </div>
     );
   }
