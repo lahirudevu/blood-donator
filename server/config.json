@@ -18,6 +18,6 @@
     "facebook" : {
         "clientID"      : "501509316688921",
         "clientSecret"  : "2e01fd27ce4bf424f5084a2bd6dd5ce0",
-        "callbackURL"   : "http://127.0.0.1:3001/auth/facebook/callback"
+        "callbackURL"   : "http://localhost:3001/auth/facebook/callback"
     }
 }
