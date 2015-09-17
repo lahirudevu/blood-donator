@@ -1,5 +1,5 @@
 import Waterline from 'waterline';
-import Alias from '../helpers/Alias';
+import { calculateAlias } from '../helpers/Alias';
 
 module.exports = Waterline.Collection.extend({
 
@@ -36,28 +36,35 @@ module.exports = Waterline.Collection.extend({
 		logger.debug('inside Event: before create');
 		logger.debug(values);
 
-		let getSlug = require('speakingurl');
-		let alias = getSlug(values.title);
-		let aliasFilter = {or: [{alias: alias}, { alias: {'startsWith': alias + '-'}}]};
+		const getSlug = require('speakingurl');
+		const alias = getSlug(values.title);
+		const aliasFilter = {
+			or: [{
+				alias: alias
+			}, {
+				alias: {
+					'startsWith': alias + '-'
+				}
+			}]
+		};
 
 		models.event.find(aliasFilter)
-		.then((matchAliases) => {
-			if (matchAliases.constructor === Array && matchAliases.length === 0) {
-                logger.info(alias + ' alias created for ' + values.title);
-                values.alias = alias;
-				cb();
-            } else {
-				// let Alias = new Alias();
-				Alias.calculateAlias(alias, matchAliases)
-				.then((alias) => {
+			.then((matchAliases) => {
+				if (matchAliases.constructor === Array && matchAliases.length === 0) {
+					logger.info(alias + ' alias created for ' + values.title);
 					values.alias = alias;
 					cb();
-				});
-			}
-		})
-		.catch((error) => {
-			logger.error('error occured in creating alias for event ' + values.title);
-			logger.error(error);
-		});
+				} else {
+					calculateAlias(alias, matchAliases)
+						.then((calculateAlias) => {
+							values.alias = calculateAlias;
+							cb();
+						});
+				}
+			})
+			.catch((error) => {
+				logger.error('error occured in creating alias for event ' + values.title);
+				logger.error(error);
+			});
 	}
 });
