@@ -6,7 +6,6 @@ import RepoStore from '../stores/RepoStore';
 import UserStore from '../stores/UserStore';
 import User from '../components/User';
 import Repo from '../components/Repo';
-import DocumentTitle from 'react-document-title';
 import connectToStores from '../utils/connectToStores';
 
 function parseLogin(params) {
@@ -82,7 +81,6 @@ export default class UserPage {
     const login = parseLogin(params);
 
     return (
-      <DocumentTitle title={`Starred by ${login}`}>
         <div>
           {user ?
             <User user={user} /> :
@@ -92,7 +90,6 @@ export default class UserPage {
           <h1>Starred repos</h1>
           {this.renderStarredRepos()}
         </div>
-      </DocumentTitle>
     );
   }
 

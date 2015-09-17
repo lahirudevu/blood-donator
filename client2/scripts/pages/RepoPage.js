@@ -6,7 +6,6 @@ import UserStore from '../stores/UserStore';
 import RepoStore from '../stores/RepoStore';
 import Repo from '../components/Repo';
 import User from '../components/User';
-import DocumentTitle from 'react-document-title';
 import connectToStores from '../utils/connectToStores';
 
 function parseFullName(params) {
@@ -83,7 +82,6 @@ export default class RepoPage {
     const fullName = parseFullName(params);
 
     return (
-      <DocumentTitle title={`Stargazers of ${fullName}`}>
         <div>
           {repo && owner ?
             <Repo repo={repo} owner={owner} /> :
@@ -93,7 +91,6 @@ export default class RepoPage {
           <h1>Stargazers</h1>
           {this.renderStargazers()}
         </div>
-      </DocumentTitle>
     );
   }
 
