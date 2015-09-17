@@ -76,7 +76,9 @@ gulp.task('watch', function() {
 
 gulp.task('hook', function () {
   return gulp.src(paths.hooks)
-    .pipe(symlink('../.git/hooks/pre-commit'));
+    .pipe(symlink(function() {
+      return '../.git/hooks/pre-commit';
+    }, {force: true}));
 });
 
 gulp.task('default',['server']);
