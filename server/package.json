@@ -16,6 +16,7 @@
     "map-stream": "0.0.6",
     "nodemailer": "0.7.0",
     "passport": "~0.3.0",
+    "passport-facebook": "^2.0.0",
     "passport-google-oauth": "~0.2.0",
     "passport-google-oauth2": "~0.1.6",
     "passport-twitter": "^1.0.3",
