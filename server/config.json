@@ -11,8 +11,13 @@
         "callbackURL": "http://localhost:3001/auth/google/callback"
     },
     "twitter": {
-    "consumerKey": "t47hvz2scCDPVrh2SIBNLg6uQ",
-    "consumerSecret": "YamoPOrXYjHmF3eZiD9j1jpxHL0MXnnw95VJAKh4mIaXrFnVbD",
-    "callbackURL": "http://127.0.0.1:3001/auth/twitter/callback"
-  }
+        "consumerKey": "t47hvz2scCDPVrh2SIBNLg6uQ",
+        "consumerSecret": "YamoPOrXYjHmF3eZiD9j1jpxHL0MXnnw95VJAKh4mIaXrFnVbD",
+        "callbackURL": "http://127.0.0.1:3001/auth/twitter/callback"
+    },
+    "facebook" : {
+        "clientID"      : "501509316688921",
+        "clientSecret"  : "2e01fd27ce4bf424f5084a2bd6dd5ce0",
+        "callbackURL"   : "http://localhost:3001/auth/facebook/callback"
+    }
 }

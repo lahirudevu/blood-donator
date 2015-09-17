@@ -37,6 +37,17 @@ router.get('/twitter/callback',
     res.redirect('/');
   });
 
+
+router.get('/facebook',
+  passport.authenticate('facebook'));
+
+router.get('/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  (req, res) => {
+    req.session.authenticated = true;
+    res.redirect('/');
+  });
+
 //destroy the session
 router.get('/logout', (req, res) => {
 	req.session.destroy();
