@@ -1,5 +1,6 @@
 import React, { Component, PropTypes, findDOMNode } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
+import Signin from './Signin';
 
 const DEFAULT_LOGIN = 'gayancharith';
 
@@ -32,6 +33,7 @@ export default class Explore extends Component {
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleGoClick = this.handleGoClick.bind(this);
     this.getInputValue = this.getInputValue.bind(this);
+    this.login = this.login.bind(this);
 
     // State that depends on props is often an anti-pattern, but in our case
     // that's what we need to we can update the input both in response to route
@@ -57,8 +59,14 @@ export default class Explore extends Component {
                onChange={this.handleOnChange}
                value={this.state.loginOrRepo} />
         <button onClick={this.handleGoClick}>Go!</button>
+        <button onClick={this.login}>Login</button>
+        <Signin />
       </div>
     );
+  }
+
+  login() {
+    console.log('login clicked');
   }
 
   handleKeyUp(e) {

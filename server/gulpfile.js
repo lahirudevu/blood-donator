@@ -32,6 +32,7 @@ gulp.task('server', function() {
 
   gulp.watch(paths.scripts, function() {
     server.start.apply(server);
+    console.log('================== SERVER RESTARTING... ========================');
   });
 });
 
