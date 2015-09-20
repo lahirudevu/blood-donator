@@ -22,12 +22,7 @@ export default class Contributions extends React.Component {
         this._onKeyDown = this._onKeyDown.bind(this);
     }
 
-    getInitialState() {
-        return getContributionState();
-    }
-
     componentDidMount() {
-         this.setState(getContributionState);
          ContributionStore.addChangeListener(this._onChange);
     }
 
