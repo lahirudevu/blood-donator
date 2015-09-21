@@ -21,26 +21,33 @@ function create(text) {
   };
 }
 
-var ContributionStore = assign({}, EventEmitter.prototype, {
+class ContribStore extends EventEmitter {
 
-  getAll: function() {
-    return contributors;
-  },
+  constructor() {
+    super();
+    //this.getAll = this.getAll.bind(this);
+  }
 
-  emitChange: function() {
+  emitChange() {
     this.emit(CHANGE_EVENT);
-  },
+  }
 
-  addChangeListener: function(callback) {
+  addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
-  },
+  }
 
-  removeChangeListener: function(callback) {
+  removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   }
-});
 
-AppDispatcher.register(function(action) {
+  getAll() {
+    return contributors;
+  }
+}
+
+let ContributionStore = new ContribStore();
+
+AppDispatcher.register(action => {
 
   var text;
 
@@ -58,4 +65,4 @@ AppDispatcher.register(function(action) {
   }
 });
 
-module.exports = ContributionStore;
+export default ContributionStore;
