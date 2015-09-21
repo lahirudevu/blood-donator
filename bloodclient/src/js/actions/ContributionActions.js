@@ -1,15 +1,15 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ContributionConstants from '../constants/ContributionConstants';
 
-var ContributionActions = {
-
-  create: function(text) {
+class ContribActions {
+  create(text) {
     AppDispatcher.dispatch({
       actionType: ContributionConstants.CONTRIB_CREATE,
       text: text
     });
   }
-
 };
 
-module.exports = ContributionActions;
+let ContributionActions = new ContribActions();
+
+export default ContributionActions;
