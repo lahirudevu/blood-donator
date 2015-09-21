@@ -5,8 +5,7 @@ var ContributionActions = {
 
   create: function(text) {
     AppDispatcher.dispatch({
-      actionType: ContributionConstants.CONTRIB_CREATE,
-      text: text
+      actionType: ContributionConstants.USER_CREATE
     });
   }
 
