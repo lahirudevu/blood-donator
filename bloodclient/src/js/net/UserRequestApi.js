@@ -3,17 +3,22 @@ import axios from 'axios';
 class UserRequest{
 
 	getUser(id){
+
+		var promiser = Promise.defer();
+
 		axios.get('/user', {
 		    params: {
 		      id: id
 		    }
 		})
 		.then(function (response) {
-		    return Promise.resolve(response);
+		    return promiser.resolve(response);
 		})
 		.catch(function (response) {
-		    return Promise.reject(response);
+		    return promiser.reject(response);
 		});
+
+		return promiser.promise;
 	}
 }
 
