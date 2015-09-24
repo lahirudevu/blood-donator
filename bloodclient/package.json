@@ -35,10 +35,10 @@
   "dependencies": {
     "react": "^0.13.3",
     "react-router": "~1.0.0-rc1",
-    "keymirror": "~0.1.1",
     "object-assign": "~4.0.1",
     "events": "~1.0.2",
     "alt": "~0.17.3",
-    "axios": "~0.6.0"
+    "axios": "~0.6.0",
+    "history": "~1.10.2"
   }
 }
