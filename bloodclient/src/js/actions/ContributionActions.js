@@ -1,16 +1,11 @@
+import alt from '../alt';
 
-import AppDispatcher from '../dispatcher/AppDispatcher';
-import ContributionConstants from '../constants/ContributionConstants';
-
-var ContributionActions = {
-
-  create: function(text) {
-    AppDispatcher.dispatch({
-      actionType: ContributionConstants.CONTRIB_CREATE,
-      text: text
-    });
+class ContribActions {
+  constructor() {
+    this.generateActions(
+      'create'
+    )
   }
+}
 
-};
-
-module.exports = ContributionActions;
+export default alt.createActions(ContribActions);

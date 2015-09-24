@@ -1,61 +1,57 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var EventEmitter = require('events').EventEmitter;
-var ContributionConstants = require('../constants/ContributionConstants');
+var alt = require('../alt');
 var assign = require('object-assign');
+var ContributionActions = require('../actions/ContributionActions');
 
 var CHANGE_EVENT = 'change';
 
 var contributors = {
-         aa: {id:"aa",complete:false,text:"madhumal"},
-         bb: {id:"bb",complete:false,text:"gayan"},
-         cc: {id:"cc",complete:false,text:"iswan"},
-         dd: {id:"dd",complete:false,text:"dhanushka"}
-    };
+    aa: {
+        id: "aa",
+        complete: false,
+        text: "madhumal"
+    },
+    bb: {
+        id: "bb",
+        complete: false,
+        text: "gayan"
+    },
+    cc: {
+        id: "cc",
+        complete: false,
+        text: "iswan"
+    },
+    dd: {
+        id: "dd",
+        complete: false,
+        text: "dhanushka"
+    }
+};
 
 function create(text) {
-  var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
-  contributors[id] = {
-    id: id,
-    complete: false,
-    text: text
-  };
+    var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
+    contributors[id] = {
+        id: id,
+        complete: false,
+        text: text
+    };
 }
 
-var ContributionStore = assign({}, EventEmitter.prototype, {
+class ContributionStore {
+    constructor() {
+        this.bindActions(ContributionActions);
+    }
 
-  getAll: function() {
-    return contributors;
-  },
+    static getAll() {
+        return contributors;
+    }
 
-  emitChange: function() {
-    this.emit(CHANGE_EVENT);
-  },
-
-  addChangeListener: function(callback) {
-    this.on(CHANGE_EVENT, callback);
-  },
-
-  removeChangeListener: function(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
-  }
-});
-
-AppDispatcher.register(function(action) {
-
-  var text;
-
-  switch(action.actionType) {
-    case ContributionConstants.CONTRIB_CREATE:
-      text = action.text.trim();
-      if (text !== '') {
+    onCreate(text) {
+        text = text.trim()
+        if (text === '') {
+            return false
+        }
         create(text);
-        ContributionStore.emitChange();
-      }
-      break;
+    }
+}
 
-    default:
-      // no op
-  }
-});
-
-module.exports = ContributionStore;
+export default alt.createStore(ContributionStore,'ContributionStore');
