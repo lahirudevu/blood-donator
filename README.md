@@ -18,7 +18,7 @@
 
 <h2>Technology and tools used</h2>
 
-* nodejs, MySQL , express , react
+* Nodejs, MySQL , Express, Waterline , Reactjs
 * webpack
 * babel
 * gulp
