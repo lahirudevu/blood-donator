@@ -21,6 +21,7 @@
 * nodejs, MySQL , express , react
 * webpack
 * babel
+* gulp
 
 <h2>development</h2>
 
