@@ -27,7 +27,7 @@
 
 * You can change files in bloodclient to customize client behavior.
 * Webpack dev server hot replacement is enabled for client.
-* All client api's are http requests, without views bound except for GET '/' request.
+* All client api's are http requests without views bound, except for GET '/' request.
 
 Contirbuted by : <a href="https://github.com/lahirudevu" >madhumal</a>, <a href="https://github.com/gayancharith" >gayan</a>,<a href="https://github.com/iswanj" >iswan</a>,<a href="https://github.com/spdhanushka" >dhanushka</a>
 
