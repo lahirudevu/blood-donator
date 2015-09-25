@@ -2,13 +2,25 @@
 
 <h1>A project for community medical emergencies</h1>
 
+<h2>Installing project dependencies</h2>
+
+1. Install nodejs
+2. Install MySQL
+
 <h2>Setting up the project</h2>
 
 1. cd bloodclient folder and run npm install.
 2. run npm start from bloodclient folder
 3. cd server folder and run npm install.
-4. run npm start from server folder.
-5. browse localhost:3001/ to view the results
+4. set the relevant configurations in config.json file
+5. run npm start from server folder.
+6. browse localhost:3001/ to view the results.
+
+<h2>Technology and tools used</h2>
+
+* nodejs, MySQL , express , react
+* webpack
+* babel
 
 <h2>development</h2>
 
