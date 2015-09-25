@@ -5,6 +5,7 @@ export default class Home extends React.Component {
 
     constructor(props) {
         super(props);
+        this._popUpLogin = this._popUpLogin.bind(this);
     }
 
     render() {
@@ -13,5 +14,9 @@ export default class Home extends React.Component {
             <Link to="/about" >About page</Link><br/>
             <Link to="/contributions" >contribution page</Link>
         </div>
+    }
+
+    _popUpLogin(){
+
     }
 }

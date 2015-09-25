@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {
     Link
 }
@@ -54,8 +55,8 @@ export default class Contributions extends React.Component {
 
     _onKeyDown(event) {
         if (event.keyCode === ENTER_KEY_CODE) {
-            let value = React.findDOMNode(this.refs.contribIP).value;
-            React.findDOMNode(this.refs.contribIP).value = "";
+            let value = ReactDOM.findDOMNode(this.refs.contribIP).value;
+            ReactDOM.findDOMNode(this.refs.contribIP).value = "";
             if (value.length > 1) {
                 ContributionActions.create(value);
             }
