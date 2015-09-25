@@ -7,11 +7,14 @@ var router = express.Router();
 **This section binds the policies to relevant routes
 **/
 logger.info('loading the system policies');
-router.all("/user/*", policies.sessionAuth, policies.isCreator, function(req, res, next) {
+
+router.all("*", policies.isAjax, function(req, res, next) {
   next();
 });
 
-
+router.all("/user/*", policies.sessionAuth, policies.isCreator, function(req, res, next) {
+  next();
+});
 
 
 /**

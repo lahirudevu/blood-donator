@@ -2,6 +2,7 @@
 var sessionAuth = require('../policies/sessionAuth');
 var isCreator = require('../policies/isCreator');
 var hasEmail = require('../policies/hasEmail');
+var isAjax = require('../policies/isAjax');
 
 /**
 **
@@ -11,5 +12,6 @@ module.exports = {
 
 	sessionAuth : sessionAuth,
 	isCreator : isCreator,
-	hasEmail : hasEmail
+	hasEmail : hasEmail,
+	isAjax : isAjax
 }
