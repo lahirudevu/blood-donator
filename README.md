@@ -12,7 +12,7 @@
 1. cd bloodclient folder and run npm install.
 2. run npm start from bloodclient folder
 3. cd server folder and run npm install.
-4. set the relevant configurations in config.json file
+4. set the relevant configurations in config.json file in server folder
 5. run npm start from server folder.
 6. browse localhost:3001/ to view the results.
 
