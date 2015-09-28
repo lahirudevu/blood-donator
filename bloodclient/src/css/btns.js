@@ -11,7 +11,7 @@ var styles = {
 	  transition : '0.8s',
 
 	  ':hover' : {
-	  	background: '#238bed',
+	  	background: '#2e89dd',
 	  	textDecoration: 'none'
 	  }
 
@@ -28,7 +28,7 @@ var styles = {
 	  transition : '0.8s',
 
 	  ':hover' : {
-	  	background: '#238bed',
+	  	background: '#2e89dd',
 	  	textDecoration: 'none'
 	  }
 
@@ -37,17 +37,18 @@ var styles = {
 	btnSecondaryLarge: {
 
 	  fontFamily: "'Roboto', sans-serif",
-	  color: "#ffffff",
+	  color: "#238bed",
 	  fontSize: "14px",
 	  background: "transparent",
 	  padding: "12px 30px 12px 30px",
 	  textDecoration: "none",
-	  border: 'solid #1f628d 1px',
+	  border: 'solid #238bed 1px',
 	  transition : '0.8s',
 
 	  ':hover' : {
 	  	background: '#1F90FF',
-	  	textDecoration: 'none'
+	  	textDecoration: 'none',
+	  	color: "#ffffff"
 	  }
 
 	},
@@ -55,17 +56,18 @@ var styles = {
 	btnSecondary:{
 
 	  fontFamily: "'Roboto', sans-serif",
-	  color: "#ffffff",
+	  color: "#238bed",
 	  fontSize: "10px",
 	  background: "transparent",
 	  padding: "10px 20px 10px 20px",
 	  textDecoration: "none",
-	  border: 'solid #1f628d 1px',
+	  border: 'solid #238bed 1px',
 	  transition : '0.8s',
 
 	  ':hover' : {
 	  	background: '#1F90FF',
-	  	textDecoration: 'none'
+	  	textDecoration: 'none',
+	  	color: "#ffffff"
 	  }
 
 	},
