@@ -1,7 +1,10 @@
+import styles from '../../css/btns.js';
 import React from 'react';
 import {Link} from 'react-router';
+import Radium from 'radium';
 
-export default class Home extends React.Component {
+@Radium
+class Home extends React.Component {
 
     constructor(props) {
         super(props);
@@ -11,6 +14,7 @@ export default class Home extends React.Component {
     render() {
         return <div>
             <p>This is the home page</p>
+            <a style={styles.btnopt} href="#">Save a Life</a><br/><br/>
             <Link to="/about" >About page</Link><br/>
             <Link to="/contributions" >contribution page</Link>
         </div>
@@ -20,3 +24,5 @@ export default class Home extends React.Component {
 
     }
 }
+
+export default Home;

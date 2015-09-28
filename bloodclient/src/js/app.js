@@ -1,5 +1,3 @@
-//import '../css/master.scss';
-
 import Home from './pages/Home';
 import About from './pages/About';
 import Contributions from './pages/Contributions';
