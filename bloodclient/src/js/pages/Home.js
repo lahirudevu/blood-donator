@@ -14,7 +14,8 @@ class Home extends React.Component {
     render() {
         return <div>
             <p>This is the home page</p>
-            <a style={styles.btnopt} href="#">Save a Life</a><br/><br/>
+            <a ref="mainBtn" style={styles.btnoptLarge} href="#">Save a Life</a><br/><br/>
+            <a ref="sideBtn" style={styles.btnopt} href="#">Save a Life</a><br/><br/>
             <Link to="/about" >About page</Link><br/>
             <Link to="/contributions" >contribution page</Link>
         </div>
