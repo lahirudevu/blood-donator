@@ -2,6 +2,8 @@
 
 <h1>A project for community medical emergencies</h1>
 
+<img src="http://oi58.tinypic.com/2eckj61.jpg" />
+
 <h2>Installing project dependencies</h2>
 
 1. Install nodejs
