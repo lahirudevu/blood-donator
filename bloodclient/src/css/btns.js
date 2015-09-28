@@ -11,7 +11,7 @@ var styles = {
 	  transition : '0.8s',
 
 	  ':hover' : {
-	  	background: '#3cb0fd',
+	  	background: '#238bed',
 	  	textDecoration: 'none'
 	  }
 
@@ -28,7 +28,7 @@ var styles = {
 	  transition : '0.8s',
 
 	  ':hover' : {
-	  	background: '#3cb0fd',
+	  	background: '#238bed',
 	  	textDecoration: 'none'
 	  }
 
