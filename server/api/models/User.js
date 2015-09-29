@@ -19,12 +19,22 @@ module.exports = Waterline.Collection.extend({
             type: 'string'
         },
 
+        ssoIds: {
+            type: 'array',
+            defaultsTo: []
+        },
+
         email: {
             type: 'email'
         },
 
         password: {
             type: 'string'
+        },
+
+        status: {
+            type: 'string',
+            enum: ['active', 'inactive']
         },
 
         requests: {
