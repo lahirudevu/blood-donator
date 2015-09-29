@@ -45,19 +45,19 @@ module.exports = function (req, res, next) {
   				if(requestType.indexOf('form-urlencoded')>-1)
   					isformurl = true;
 
-		  //if multipart or json request
-		  if (isjsonreq || ismultipart || isformurl) {
+				//if multipart or json request
+				if (isjsonreq || ismultipart || isformurl) {
 
-		  	logger.debug('application/json or multipart request or form data');
-		  	next();
-		  }else{
+					logger.debug('application/json or multipart request or form data');
+					next();
+				}else{
 
-		  	logger.debug('not xhr method');
-		  	res.render('index');
-		  }
+					logger.debug('not xhr method');
+					res.render('index');
+				}
+			}
+
 		}
 
-	}
-
-});
+	});
 }

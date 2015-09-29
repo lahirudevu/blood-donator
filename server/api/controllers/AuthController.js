@@ -13,7 +13,7 @@ router.get('/google/callback',
   }),
   (req, res) => {
   	req.session.authenticated = true;
-    res.send('authenticated');
+    res.redirect('/');
   });
 
 //for dev purposes only
