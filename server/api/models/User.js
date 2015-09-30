@@ -19,9 +19,16 @@ module.exports = Waterline.Collection.extend({
             type: 'string'
         },
 
-        ssoIds: {
-            type: 'array',
-            defaultsTo: []
+        facebookId: {
+            type: 'string'
+        },
+
+        twitterId: {
+            type: 'string'
+        },
+
+        googleId: {
+            type: 'string'
         },
 
         email: {

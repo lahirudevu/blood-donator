@@ -12,7 +12,6 @@ function getProfileUser(profile){
   switch(profile.provider) {
 
     case 'google':
-        user.id = profile.id;
         user.firstName = profile.name.familyName;
         user.lastName = profile.name.givenName;
         user.email = profile.emails[0].value;
@@ -20,7 +19,6 @@ function getProfileUser(profile){
         break;
 
     case 'facebook':
-        user.id = profile.id;
         let nameTokens = profile.displayName.split(' ');
         user.firstName = nameTokens[0];
         user.lastName = nameTokens[nameTokens.length-1];
@@ -28,7 +26,6 @@ function getProfileUser(profile){
         break;
 
     case 'twitter':
-        user.id = profile.id;
         let nametokens = profile.displayName.split(' ');
         user.firstName = nametokens[0];
         user.lastName = nametokens[nametokens.length-1];
@@ -36,6 +33,8 @@ function getProfileUser(profile){
         break;
 
   }
+
+  return user;
 }
 
 passport.serializeUser(function(user, done) {
@@ -50,7 +49,27 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GoogleStrategy(
   serverConfigs.google,
   function(accessToken, refreshToken, profile, done) {
-    getProfileUser(profile);
+
+    let usrobj = getProfileUser(profile);
+    usrobj.googleId = profile.id;
+
+    models.user.find({googleId : usrobj.googleId})
+    .then(result=>{
+      if(result.length>0){
+        logger.info('user found..');
+      }else{
+        logger.info('creating user..');
+        models.user.create(usrobj)
+        .then(result=>{
+          logger.debug(result);
+        });
+      }
+    })
+    .catch(error=>{
+        logger.error(error);
+    });
+
+
     return done(null, profile);
   }
 ));
@@ -58,7 +77,25 @@ passport.use(new GoogleStrategy(
 passport.use(new TwitterStrategy(
   serverConfigs.twitter,
   function(token, tokenSecret, profile, done) {
-    getProfileUser(profile);
+
+    let usrobj = getProfileUser(profile);
+    usrobj.twitterId = profile.id;
+
+    models.user.find({twitterId : usrobj.twitterId})
+    .then(result=>{
+      if(result.length>0){
+        logger.info('user found..');
+      }else{
+        logger.info('creating user..');
+        models.user.create(usrobj)
+        .then(result=>{
+          logger.debug(result);
+        });
+      }
+    })
+    .catch(error=>{
+        logger.error(error);
+    });
     return done(null, profile);
   }
 ));
@@ -67,7 +104,25 @@ passport.use(new TwitterStrategy(
 passport.use(new FacebookStrategy(
   serverConfigs.facebook,
   function(token, refreshToken, profile, done) {
-     getProfileUser(profile);
+
+     let usrobj = getProfileUser(profile);
+     usrobj.facebookId = profile.id;
+
+    models.user.find({facebookId : usrobj.facebookId})
+    .then(result=>{
+      if(result.length>0){
+        logger.info('user found..');
+      }else{
+        logger.info('creating user..');
+        models.user.create(usrobj)
+        .then(result=>{
+          logger.debug(result);
+        });
+      }
+    })
+    .catch(error=>{
+        logger.error(error);
+    });
     return done(null, profile);
   }
 ));
