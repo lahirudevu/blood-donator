@@ -15,6 +15,7 @@ function getProfileUser(profile){
         user.firstName = profile.name.familyName;
         user.lastName = profile.name.givenName;
         user.email = profile.emails[0].value;
+        user.profileImageUrl = profile.photos[0].value;
         user.status = 'active';
         break;
 
@@ -22,6 +23,7 @@ function getProfileUser(profile){
         let nameTokens = profile.displayName.split(' ');
         user.firstName = nameTokens[0];
         user.lastName = nameTokens[nameTokens.length-1];
+        user.profileImageUrl = serverConfigs.fbGraphApiUrl + profile.id + '/picture';
         user.status = 'inactive';
         break;
 
@@ -29,6 +31,7 @@ function getProfileUser(profile){
         let nametokens = profile.displayName.split(' ');
         user.firstName = nametokens[0];
         user.lastName = nametokens[nametokens.length-1];
+        user.profileImageUrl = profile.photos[0].value;
         user.status = 'inactive';
         break;
 
