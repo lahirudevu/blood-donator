@@ -15,21 +15,21 @@ function getProfileUser(profile){
         user.firstName = profile.name.familyName;
         user.lastName = profile.name.givenName;
         user.email = profile.emails[0].value;
-        logger.info(user);
+        user.status = 'active';
         break;
 
     case 'facebook':
         let nameTokens = profile.displayName.split(' ');
         user.firstName = nameTokens[0];
         user.lastName = nameTokens[nameTokens.length-1];
-        logger.info(user);
+        user.status = 'inactive';
         break;
 
     case 'twitter':
         let nametokens = profile.displayName.split(' ');
         user.firstName = nametokens[0];
         user.lastName = nametokens[nametokens.length-1];
-        logger.info(user);
+        user.status = 'inactive';
         break;
 
   }
@@ -57,20 +57,20 @@ passport.use(new GoogleStrategy(
     .then(result=>{
       if(result.length>0){
         logger.info('user found..');
+        return done(null, result[0]);
       }else{
         logger.info('creating user..');
         models.user.create(usrobj)
         .then(result=>{
           logger.debug(result);
+          return done(null, result);
         });
       }
     })
     .catch(error=>{
         logger.error(error);
+        return done(null, profile);
     });
-
-
-    return done(null, profile);
   }
 ));
 
@@ -85,18 +85,20 @@ passport.use(new TwitterStrategy(
     .then(result=>{
       if(result.length>0){
         logger.info('user found..');
+        return done(null, result[0]);
       }else{
         logger.info('creating user..');
         models.user.create(usrobj)
         .then(result=>{
           logger.debug(result);
+          return done(null, result);
         });
       }
     })
     .catch(error=>{
         logger.error(error);
+        return done(null, profile);
     });
-    return done(null, profile);
   }
 ));
 
@@ -112,18 +114,20 @@ passport.use(new FacebookStrategy(
     .then(result=>{
       if(result.length>0){
         logger.info('user found..');
+        return done(null, result[0]);
       }else{
         logger.info('creating user..');
         models.user.create(usrobj)
         .then(result=>{
           logger.debug(result);
+          return done(null, result);
         });
       }
     })
     .catch(error=>{
         logger.error(error);
+        return done(null, profile);
     });
-    return done(null, profile);
   }
 ));
 

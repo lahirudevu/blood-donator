@@ -13,6 +13,7 @@ router.get('/google/callback',
   }),
   (req, res) => {
   	req.session.authenticated = true;
+    req.session.user = req.user;
     res.redirect('/');
   });
 
@@ -20,6 +21,7 @@ router.get('/google/callback',
 router.get('/authenticated', function(req, res) {
   if (req.isAuthenticated()) {
     logger.info('authenticated');
+    logger.debug(req.session.user);
     res.send('authenticated');
   }else{
   	logger.info('not authenticated');
@@ -34,6 +36,7 @@ router.get('/twitter/callback',
   passport.authenticate('twitter', { failureRedirect: '/login' }),
   (req, res) => {
     req.session.authenticated = true;
+    req.session.user = req.user;
     res.redirect('/');
   });
 
@@ -45,6 +48,7 @@ router.get('/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   (req, res) => {
     req.session.authenticated = true;
+    req.session.user = req.user;
     res.redirect('/');
   });
 
