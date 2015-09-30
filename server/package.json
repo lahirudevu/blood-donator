@@ -24,7 +24,8 @@
     "sails-mysql": "~0.11.0",
     "speakingurl": "^6.0.0",
     "waterline": "~0.10.26",
-    "winston": "~1.0.1"
+    "winston": "~1.0.1",
+    "bcrypt": "~0.8.5"
   },
   "directories": {
     "test": "test"

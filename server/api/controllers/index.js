@@ -12,9 +12,9 @@ router.all("*", policies.isAjax, function(req, res, next) {
   next();
 });
 
-router.all("/user/*", policies.sessionAuth, policies.isCreator, function(req, res, next) {
-  next();
-});
+// router.all("/user/*", policies.sessionAuth, policies.isCreator, function(req, res, next) {
+//   next();
+// });
 
 
 /**

@@ -19,12 +19,29 @@ module.exports = Waterline.Collection.extend({
             type: 'string'
         },
 
+        facebookId: {
+            type: 'string'
+        },
+
+        twitterId: {
+            type: 'string'
+        },
+
+        googleId: {
+            type: 'string'
+        },
+
         email: {
             type: 'email'
         },
 
         password: {
             type: 'string'
+        },
+
+        status: {
+            type: 'string',
+            enum: ['active', 'inactive']
         },
 
         requests: {

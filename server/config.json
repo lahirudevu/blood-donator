@@ -1,9 +1,10 @@
 {
 	"DBUser": "root",
-	"DBPassword": "iswan@1987",
+	"DBPassword": "pass",
 	"EmailService": "Gmail",
 	"Email": "blooddonator123",
 	"EmailPassword": "blood @123",
+    "fbGraphApiUrl" : "https://graph.facebook.com/",
 
 	"google": {
         "clientID": "383932440440-7nqrv64ub3fp4ghcigj9bjj21lqu1krk.apps.googleusercontent.com",

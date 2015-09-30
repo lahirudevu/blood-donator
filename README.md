@@ -31,6 +31,6 @@
 * Webpack dev server hot replacement is enabled for client.
 * All client api's are http requests without views bound, except for GET '/' request.
 
-Maintained by : <a href="https://github.com/lahirudevu" >madhumal</a>, <a href="https://github.com/gayancharith" >gayan</a>,<a href="https://github.com/iswanj" >iswan</a>,<a href="https://github.com/spdhanushka" >dhanushka</a>
+Maintained by : <a href="https://github.com/lahirudevu" >lahiru</a>, <a href="https://github.com/gayancharith" >gayan</a>,<a href="https://github.com/iswanj" >iswan</a>,<a href="https://github.com/spdhanushka" >dhanushka</a>
 
 
