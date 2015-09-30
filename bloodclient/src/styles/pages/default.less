@@ -1,0 +1,61 @@
+@import "../base/variables.less";
+header.topNavbar {
+  background-color: @brand-primary-dark;
+  width: 100vw;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  .navWrapper {
+    margin: 0 auto;
+    float: none;
+
+    .logo {
+      .logotext {
+        color: @brand-primary;
+        font-size: 2em;
+        padding-top: 1.1em;
+        line-height: 0;
+        font-weight: 700;
+      }
+    }
+
+    .mainNavigation {
+      ul{
+        li {
+          float: left;
+          margin-right: 1.7em;
+          margin-top: 1.63em;
+          a {
+            &:link, &:visited {
+              color: @text-white;
+              font-weight: 500;
+              text-decoration: none;
+            }
+            &:hover, &:active, &.active {
+              color: @brand-primary;
+            }
+          }
+        }
+      }
+    }
+
+    .userSection {
+      padding-top: 1em;
+    }
+  }
+}
+
+
+section.appBody {
+  background-color: @brand-primary;
+  width: 100%;
+  height: 91vh;
+  float: left;
+  margin-top: 60px;
+}
+
+footer.appFooter {
+
+}
