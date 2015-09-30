@@ -2,6 +2,7 @@
 
 import express from 'express';
 import Email from '../services/Email';
+import bcrypt from 'bcrypt';
 
 var router = express.Router();
 router.use(passport.initialize());
@@ -12,11 +13,25 @@ router.post('/', (req, res) => {
 
 	let user = req.body;
 
+	user.status = 'inactive';
+
+	//check confirm and set passwords are equal
+	if(!user.password ||!user.confirmPassword || (user.confirmPassword!=user.password))
+		res.status(400).send("password not set");
+
+	delete user.confirmPassword;
+
+	//encrypt the password data
+	let salt = bcrypt.genSaltSync(10);
+	let hash = bcrypt.hashSync(user.password, salt);
+	user.password = hash;
+
 	models.user.create(user)
 	.then((result)=>{
 
 		logger.info('created a new user ');
 		logger.debug(result);
+		delete result.password;
 
 		res.status(201).send(result);
 	})
@@ -215,6 +230,15 @@ router.get('/create', (req, res) => {
 		logger.error(error);
 		res.send(error);
 	});
+});
+
+router.get('/bcrypt/bcrypt',(req,res)=>{
+	let salt = bcrypt.genSaltSync(10);
+	let hash = bcrypt.hashSync("my password", salt);
+	var result = bcrypt.compareSync("my password", hash);
+	logger.info('hash '+ hash);
+	logger.info(result);
+	res.send(result);
 });
 
 router.get('/send-email', (req, res) => {
