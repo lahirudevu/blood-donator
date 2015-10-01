@@ -16,13 +16,7 @@ homeBack.src = require('./img/family.png');
 
 class Main extends React.Component{
 	render() {
-		let styles = {
-			appBody: {
-				backgroundImage: `url(${homeBack.src})`,
-				backgroundPosition: 'bottom center',
-				backgroundRepeat: 'no-repeat'
-			}
-		}
+		
 		return (
 			<div>
         <header className="topNavbar">
@@ -45,7 +39,7 @@ class Main extends React.Component{
 	          </nav>
 					</div>
         </header>
-        <section className="appBody" style={styles.appBody}>
+        <section className="appBody">
           {React.cloneElement(this.props.children, {...this.props})}
         </section>
 				<footer className="appFooter">

@@ -6,6 +6,9 @@ import Radium from 'radium';
 //import Components
 import Button from '../components/Button';
 
+let homeBack = document.createElement('img');
+homeBack.src = require('./img/family.png');
+
 @Radium
 class Home extends React.Component {
 
@@ -20,7 +23,7 @@ class Home extends React.Component {
            fontSize: '4em',
            fontWeight: '100',
            color: '#fff',
-           marginTop: '5%',
+           marginTop: '0%',
            textAlign: 'center'
          },
          bigText: {
@@ -40,10 +43,19 @@ class Home extends React.Component {
            ':hover': {
              color: '#001e3a'
            }
-         }
+         },
+         appBody: {
+          backgroundImage: `url(${homeBack.src})`,
+          backgroundPosition: 'bottom center',
+          backgroundColor : '#1f90ff',
+          backgroundRepeat: 'no-repeat',
+          width : '100%',
+          height : '91vh',
+          paddingTop : '5%'
+        }
        }
         return (
-          <div>
+          <div style={styles.appBody}>
               <h1 style={styles.pageTitle}>you can <span style={styles.bigText}>keep</span> them <span style={styles.bigText}>happy</span></h1>
               <div style={styles.mainButtonSection}>
                 <Button type="save" size="large" label="Save a Life" />
