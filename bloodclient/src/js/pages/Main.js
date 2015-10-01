@@ -10,10 +10,18 @@ import Button from '../components/Button';
 import '../../styles/base/styles.less';
 import '../../styles/pages/default.less';
 
+//Load images
+let homeBack = document.createElement('img');
+homeBack.src = require('./img/family.png');
+
 class Main extends React.Component{
 	render() {
-		let defStyles = {
-			marginLeft: '6px'
+		let styles = {
+			appBody: {
+				backgroundImage: `url(${homeBack.src})`,
+				backgroundPosition: 'bottom center',
+				backgroundRepeat: 'no-repeat'
+			}
 		}
 		return (
 			<div>
@@ -37,7 +45,7 @@ class Main extends React.Component{
 	          </nav>
 					</div>
         </header>
-        <section className="appBody">
+        <section className="appBody" style={styles.appBody}>
           {React.cloneElement(this.props.children, {...this.props})}
         </section>
 				<footer className="appFooter">
