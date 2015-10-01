@@ -3,6 +3,7 @@
 import express from 'express';
 import Email from '../services/Email';
 import bcrypt from 'bcrypt';
+import UtilMethods from '../helpers/UtilMethods';
 
 var router = express.Router();
 router.use(passport.initialize());
@@ -70,6 +71,30 @@ router.post('/update', (req, res) => {
 
 	let filter = req.body.filter;
 	let updateObj = req.body.update;
+	logger.info('updating matcing models ');
+
+	//update the matching objects
+	models.user.update(filter, updateObj)
+	.then((result)=>{
+
+		logger.info('updated user objs ');
+		logger.debug(result);
+
+		res.status(200).send(result);
+	})
+	.catch((error)=>{
+		logger.error(error);
+		res.status(400).send(error);
+	});
+});
+
+//update email data
+router.post('/update/email', (req, res) => {
+
+	let filter = req.body.filter;
+	let newEmail = req.body.email;
+	let veryfyCode = UtilMethods.generateRandomString(7);
+	let updateObj = {email:newEmail, emailVeryfyCode:veryfyCode};
 	logger.info('updating matcing models ');
 
 	//update the matching objects

@@ -41,7 +41,7 @@ module.exports = Waterline.Collection.extend({
 
         status: {
             type: 'string',
-            enum: ['active', 'inactive']
+            enum: ['active', 'inactive','suspend']
         },
 
         requests: {
@@ -61,6 +61,10 @@ module.exports = Waterline.Collection.extend({
         },
 
         profileImageUrl: {
+            type: 'string'
+        },
+
+        emailVeryfyCode: {
             type: 'string'
         }
 
