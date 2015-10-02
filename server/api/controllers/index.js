@@ -27,6 +27,7 @@ router.use('/auth', require('./AuthController'));
 router.use('/request', require('./RequestController'));
 router.use('/event', require('./EventController'));
 router.use('/comment', require('./CommentController'));
+router.use('/resource', require('./ResourceController'));
 
 router.get('/', (req, res) => {
   res.render('index');

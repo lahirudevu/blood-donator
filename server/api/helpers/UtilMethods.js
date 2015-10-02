@@ -23,6 +23,13 @@ export default {
         .slice(0, length)        // return required number of characters
         .replace(/\+/g, '0')  // replace '+' with '0'
         .replace(/\//g, '0'); // replace '/' with '0'
+	},
+
+	//get current date to the format of 'yyyy-mm-dd'
+	calculateCurrentDate: function() {
+		let date = new Date();
+		// let datevalues = [date.getFullYear(), date.getMonth() + 1, date.getDate()];
+		return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
 	}
 
 };
