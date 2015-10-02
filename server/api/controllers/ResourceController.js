@@ -17,7 +17,7 @@ let storage = multer.diskStorage({
 
 let upload = multer({ storage: storage });
 
-// accept one file where the name of the form field is named photho
+// upload file
 router.post('/upload', policies.uploadDirectory, upload.single('image'), (req, res) => {
 	logger.debug('uploading file...');
     logger.info(req.file) // form files
