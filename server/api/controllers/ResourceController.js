@@ -11,7 +11,10 @@ let storage = multer.diskStorage({
 		cb(null, appRoot + '/public/images/' + UtilMethods.calculateCurrentDate());
 	},
 	filename: function(req, file, cb) {
-		cb(null, file.originalname + '-' + Date.now());
+		const lastDotIndex = file.originalname.lastIndexOf('.');
+		const fileName = file.originalname.substr(0, lastDotIndex);
+		const fileExtenstion = file.originalname.substr(lastDotIndex + 1 );
+		cb(null, fileName + '-' + Date.now() + '.' + fileExtenstion);
 	}
 });
 
