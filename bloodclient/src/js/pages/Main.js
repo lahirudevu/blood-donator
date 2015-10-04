@@ -10,13 +10,9 @@ import Button from '../components/Button';
 import '../../styles/base/styles.less';
 import '../../styles/pages/default.less';
 
-//Load images
-let homeBack = document.createElement('img');
-homeBack.src = require('./img/family.png');
-
 class Main extends React.Component{
 	render() {
-		
+
 		return (
 			<div>
         <header className="topNavbar">
@@ -25,7 +21,7 @@ class Main extends React.Component{
 							<p className="logotext">H</p>
 	          </div>
 	          <div className="userSection right">
-							<Button type="secondory" size="small" label="Log in / Sign up" />&nbsp;&nbsp;
+							<Button type="secondory" size="small" label="Sign in / Sign up" href="/signin" />&nbsp;&nbsp;
 							<Button type="save" size="small" label="Save a Life" />
 	          </div>
 						<nav className="mainNavigation right">

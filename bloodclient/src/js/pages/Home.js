@@ -15,8 +15,12 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this._popUpLogin = this._popUpLogin.bind(this);
-    }
 
+        this.state = {windowHeight: window.innerHeight};
+    }
+    handleResize(e) {
+      this.setState({windowHeight: window.innerHeight});
+    }
     render() {
        let styles = {
          pageTitle: {
@@ -24,7 +28,14 @@ class Home extends React.Component {
            fontWeight: '100',
            color: '#fff',
            marginTop: '0%',
-           textAlign: 'center'
+           textAlign: 'center',
+           '@media (max-width: 1200px)': {
+              fontSize: '3.5em',
+              marginTop: '5%'
+            },
+            '@media (max-width: 650px)': {
+              display: 'none'
+            }
          },
          bigText: {
            fontSize: '1.5em',
@@ -32,7 +43,10 @@ class Home extends React.Component {
          },
          mainButtonSection: {
            textAlign: 'center',
-           marginTop: '5%'
+           marginTop: '5%',
+           '@media (max-width: 650px)': {
+             marginTop: '30%'
+           }
          },
          rqstLink: {
            color: '#fff',
@@ -50,7 +64,8 @@ class Home extends React.Component {
           backgroundColor : '#1f90ff',
           backgroundRepeat: 'no-repeat',
           width : '100%',
-          height : '91vh',
+          minHeight : '91vh',
+          height: this.state.windowHeight - 60,
           paddingTop : '5%'
         }
        }
@@ -58,7 +73,7 @@ class Home extends React.Component {
           <div style={styles.appBody}>
               <h1 style={styles.pageTitle}>you can <span style={styles.bigText}>keep</span> them <span style={styles.bigText}>happy</span></h1>
               <div style={styles.mainButtonSection}>
-                <Button type="save" size="large" label="Save a Life" />
+                <Button type="save" size="largest" label="Save a Life" />
                 <br /><a href="#" style={styles.rqstLink}>or Request for help</a>
               </div>
           </div>

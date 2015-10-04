@@ -14,6 +14,11 @@ class Helper {
         color: btnColor,
         backgroundColor: Color(Background).darken(0.1).hexString(),
         borderColor: Color(Border).darken(0.12).hexString(),
+      },
+      ':active': {
+        color: btnColor,
+        backgroundColor: Color(Background).darken(0.1).hexString(),
+        borderColor: Color(Border).darken(0.12).hexString(),
       }
     }
   }

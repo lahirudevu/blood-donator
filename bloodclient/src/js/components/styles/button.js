@@ -10,7 +10,6 @@ export default {
   	borderColor: Color($.def).darken(0.1).hexString(),
   	display: 'inline-block',
   	marginBottom: 0, // For input.btn
-  	marginRight: '.3em',
   	fontWeight: 400,
   	textAlign: 'center',
   	verticalAlign: 'middle',
@@ -31,6 +30,9 @@ export default {
     borderRadius: $.bordeRadiusBase
   },
   large: {
+
+  },
+  largest: {
     padding: `${$.btnPaddingLgVertical} ${$.btnPaddingLgHorizontal}`,
     fontSize: '1.6em',
     fontWeight: '400',
