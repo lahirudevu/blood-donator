@@ -112,6 +112,79 @@ router.post('/update/email', (req, res) => {
 	});
 });
 
+//send an email for forgot password
+router.post('/forgotpass/email', (req, res) => {
+
+	let email = req.body.email;
+	let veryfyCode = UtilMethods.generateRandomString(7);
+	let filter = {email:email};
+	let updateObj = {passwordVerifycode : veryfyCode};
+	logger.info('updating matcing models ');
+
+	//update the matching objects
+	models.user.update(filter, updateObj)
+	.then((result)=>{
+
+		logger.info('updated user objs ');
+		logger.debug(result);
+
+		if(result.length==0){
+			res.status(404).send({msg : "No user found with the given email.."});
+		}else{
+			delete result[0].passwordVerifycode;
+			delete result[0].password;
+			res.status(200).send(result);
+		}
+		
+	})
+	.catch((error)=>{
+		logger.error(error);
+		res.status(400).send(error);
+	});
+});
+
+//update password for forgot password
+router.post('/forgotpass/update', (req, res) => {
+
+	let veryfyCode = req.body.veryfyCode;
+	let password = req.body.password;
+	let filter = {passwordVerifycode : veryfyCode};
+	
+		//check confirm and set passwords are equal
+	if(!password)
+		res.status(400).send("password not set");
+
+	//encrypt the password data
+	let salt = bcrypt.genSaltSync(10);
+	let hash = bcrypt.hashSync(password, salt);
+	password = hash;
+
+	let updateObj = {password:password};
+
+	logger.info('updating matcing models ');
+
+	//update the matching objects
+	models.user.update(filter, updateObj)
+	.then((result)=>{
+
+		logger.info('updated user objs ');
+		logger.debug(result);
+
+		if(result.length==0){
+			res.status(404).send({msg : "No user found with the given email.."});
+		}else{
+			delete result[0].passwordVerifycode;
+			delete result[0].password;
+			res.status(200).send(result);
+		}
+		
+	})
+	.catch((error)=>{
+		logger.error(error);
+		res.status(400).send(error);
+	});
+});
+
 //delete an instance by id
 router.delete('/:id', (req, res) => {
 

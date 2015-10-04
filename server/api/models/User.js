@@ -66,6 +66,10 @@ module.exports = Waterline.Collection.extend({
 
         emailVeryfyCode: {
             type: 'string'
+        },
+
+        passwordVerifycode:{
+            type: 'string'
         }
 
     },
