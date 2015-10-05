@@ -1,5 +1,6 @@
 import Waterline from 'waterline';
 import { calculateAlias } from '../helpers/Alias';
+import async from 'async';
 
 module.exports = Waterline.Collection.extend({
 
@@ -29,6 +30,11 @@ module.exports = Waterline.Collection.extend({
 		location: {
 			type: 'string',
 			required: true
+		},
+
+		resourceId: {
+			collection: 'resource',
+			via: 'eventId'
 		}
 	},
 
@@ -66,5 +72,32 @@ module.exports = Waterline.Collection.extend({
 				logger.error('error occured in creating alias for event ' + values.title);
 				logger.error(error);
 			});
+	},
+
+	getImages: (eventId) => {
+		return new Promise((resolve, reject) => {
+			if (eventId) {
+				models.resource.find({eventId: eventId})
+					.then((resourceData) => {
+						logger.info('resources data for event' + eventId);
+						logger.debug(resourceData);
+
+						let imagesArray = []; //initialize images array for event
+
+						async.eachSeries(resourceData, function iterator(item, callback) {
+							imagesArray.push(item.path);
+							callback();
+						}, function done() {
+							resolve(imagesArray);
+						});
+					})
+					.catch((error) => {
+						logger.error(error);
+						reject('error occured');
+					});
+			} else {
+				reject('event id not defined');
+			}
+		});
 	}
 });

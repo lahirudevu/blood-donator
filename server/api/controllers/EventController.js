@@ -1,4 +1,7 @@
 import express from 'express';
+import multer  from 'multer';
+import policies from '../policies/';
+import UtilMethods from '../helpers/UtilMethods';
 
 var router = express.Router();
 
@@ -171,6 +174,57 @@ router.put('/', (req, res) => {
 	.catch((error)=>{
 		logger.error(error);
 		res.status(400).send(error);
+	});
+});
+
+//initialize storage variable for uploading files
+let storage = multer.diskStorage({
+		destination: function(req, file, cb) {
+			cb(null, appRoot + '/public/images/' + UtilMethods.calculateCurrentDate());
+		},
+		filename: function(req, file, cb) {
+			const lastDotIndex = file.originalname.lastIndexOf('.');
+			const fileName = file.originalname.substr(0, lastDotIndex);
+			const fileExtenstion = file.originalname.substr(lastDotIndex + 1);
+			cb(null, fileName + '-' + Date.now() + '.' + fileExtenstion);
+		}
+	});
+let upload = multer({ storage: storage });
+
+// upload image
+router.post('/image-upload', policies.uploadDirectory, upload.single('image'), (req, res) => {
+	logger.debug('uploading file to event ' + req.body.eventId);
+    logger.info(req.file) // form files
+
+    let imagePath = req.file.path;
+    let eventId = req.body.eventId;
+    logger.debug('event id => ' + eventId);
+
+    models.resource.create({path: imagePath, eventId: eventId})
+    .then((createdResult) => {
+    	logger.info('resource created for event ' + eventId);
+    	logger.debug(createdResult);
+    	// logger.debug('resource added for event id ' + updateResult[0].id)
+    	res.status(200).send('success');
+    })
+    .catch((error) => {
+    	res.status(404).send('not found');	    	
+    	logger.error(error);
+    });    
+});
+
+//retrieve images for an event
+router.get('/images/getimages', (req, res) => {
+	var eventId = req.query.eventId;
+	logger.debug('get images for event ' + eventId);
+
+	models.event.getImages(eventId)
+	.then((imagesArray) => {
+		res.status(200).send(imagesArray);
+	})
+	.catch((error) => {
+		logger.error(error);
+		res.status(500).send('error occured');
 	});
 });
 
