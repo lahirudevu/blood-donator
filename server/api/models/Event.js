@@ -87,7 +87,7 @@ module.exports = Waterline.Collection.extend({
 						async.eachSeries(resourceData, (item, callback) => {
 							imagesArray.push(item.path);
 							callback();
-						}, done() => {
+						}, function done() {
 							resolve(imagesArray);
 						});
 					})
