@@ -1,3 +1,6 @@
+var path = require('path');
+var srcPath = path.join(__dirname, 'src');
+
 module.exports = {
     entry: getEntrySources(['./src/js/app.js']),
     output: {
@@ -5,6 +8,11 @@ module.exports = {
         filename: 'build/bundle.js'
     },
     devtool: 'eval',
+    resolve: {
+        root: srcPath,
+        extensions: ['', '.js'],
+        modulesDirectories: ['node_modules', 'src']
+    },
     module: {
         preLoaders: [
             {

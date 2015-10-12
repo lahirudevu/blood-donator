@@ -5,6 +5,7 @@ import About from '../pages/About';
 import Signin from '../pages/Signin';
 import NotFound from '../pages/NotFound';
 import Contributions from '../pages/Contributions';
+import EventAdd from '../pages/EventAdd';
 
 import { Router, IndexRoute, Route } from 'react-router';
 
@@ -14,6 +15,7 @@ export default (
 		<Route path="/about" component={About} />
 		<Route path="/contributions" component={Contributions} />
 		<Route path="/signin" component={Signin} />
+		<Route path="/event/add" component={EventAdd} />
 		<Route path="*" component={NotFound} />
 	</Route>
 );

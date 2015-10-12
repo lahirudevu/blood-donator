@@ -10,7 +10,7 @@ router.post('/', (req, res) => {
 
     models.event.create(eventObject)
     .then((result) => {
-        logger.info('created a new request ');
+        logger.info('created a new event ');
 		logger.debug(result);
 
 		res.status(201).send(result);

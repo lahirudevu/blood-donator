@@ -31,6 +31,7 @@ class Main extends React.Component{
 								<li><Link to={`/request`} activeClassName="active">Request a Help</Link></li>
 								<li><Link to={`/about`} activeClassName="active">About</Link></li>
 								<li><Link to={`/contributions`} activeClassName="active">Contributions</Link></li>
+								<li><Link to={`/event/add`} activeClassName="active">Add Events</Link></li>
 							</ul>
 	          </nav>
 					</div>

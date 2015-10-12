@@ -84,10 +84,10 @@ module.exports = Waterline.Collection.extend({
 
 						let imagesArray = []; //initialize images array for event
 
-						async.eachSeries(resourceData, function iterator(item, callback) {
+						async.eachSeries(resourceData, (item, callback) => {
 							imagesArray.push(item.path);
 							callback();
-						}, function done() {
+						}, done() => {
 							resolve(imagesArray);
 						});
 					})

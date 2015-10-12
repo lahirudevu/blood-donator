@@ -8,9 +8,9 @@ var router = express.Router();
 **/
 logger.info('loading the system policies');
 
-// router.all("*", policies.isAjax, function(req, res, next) {
-//   next();
-// });
+router.all("*", policies.isAjax, function(req, res, next) {
+  next();
+});
 
 // router.all("/user/*", policies.sessionAuth, policies.isCreator, function(req, res, next) {
 //   next();
